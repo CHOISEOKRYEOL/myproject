@@ -72,10 +72,6 @@ public class game {
 
             System.out.print("성별 > (m/w) ");
             sex[i] = scanner.nextLine();
-            if(!sex[i].equalsIgnoreCase("m") || !sex[i].equalsIgnoreCase("w")) { 
-              System.out.println("선택하신 성별이 없습니다.");
-              break;
-            }
 
 
             System.out.print("무기 >");
