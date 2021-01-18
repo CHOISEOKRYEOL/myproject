@@ -20,6 +20,9 @@ public class game {
   static String magician[] = new String[LENGTH];
   static String archer[] =  new String[LENGTH];
   static String thief[] = new String[LENGTH];
+  static String str[] = new String[LENGTH];
+  static String str1[] = new String[LENGTH];
+
 
   static void setcharacter() {
     System.out.println("1.전사닉네임");
@@ -34,30 +37,30 @@ public class game {
 
   static void viewstat() {
     System.out.println("warrior, magician, archer, thief");
-    String str = scanner.nextLine();
-    if(str.equalsIgnoreCase("warrior")) {
+    str[i] = scanner.nextLine();
+    if(str[i].equalsIgnoreCase("warrior")) {
       System.out.println("힘: 10, 민첩: 4, 마나: 1, 공격속도: 5");
     }    
-    else if(str.equalsIgnoreCase("magician")) {
+    else if(str[i].equalsIgnoreCase("magician")) {
       System.out.println("힘: 3, 민첩: 6, 마나: 10, 공격속도: 3");
     }
-    else if(str.equalsIgnoreCase("archer")) {
+    else if(str[i].equalsIgnoreCase("archer")) {
       System.out.println("힘: 6, 민첩: 6, 마나: 4, 공격속도: 8");
     }
-    else if(str.equalsIgnoreCase("thief"))
+    else if(str[i].equalsIgnoreCase("thief"))
       System.out.println("힘: 5, 민첩: 9, 마나: 5, 공격속도: 6");
   }
 
   static void viewphysical(){
     System.out.println("소인, 중인, 대인");
-    String str1 = scanner.nextLine();
-    if(str1.equalsIgnoreCase("소인")) {
+    str1[i] = scanner.nextLine();
+    if(str1[i].equalsIgnoreCase("소인")) {
       System.out.println("소인");
     }    
-    else if(str1.equalsIgnoreCase("중인")) {
+    else if(str1[i].equalsIgnoreCase("중인")) {
       System.out.println("중인");
     }
-    else if(str1.equalsIgnoreCase("대인")) {
+    else if(str1[i].equalsIgnoreCase("대인")) {
       System.out.println("대인");
     }
   }
