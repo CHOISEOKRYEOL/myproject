@@ -7,14 +7,13 @@ public class JobHandler {
 
   static class Job {
 
-    String hair;
-    String sex;
-    String ace;
     String warrior;
     String magician;
     String archer;
     String thief;
-
+    String sex;
+    String hair;
+    String ace;
   }
 
   static Job[] jobs = new Job[game.LENGTH];
@@ -79,11 +78,9 @@ public class JobHandler {
 
           case ("thief") :
             j.ace=("표창");
-
         }
 
         jobs[size++] = j;
-
 
         System.out.println("계속 입력하시겠습니까? (y/N)");
         if(!game.scanner.nextLine().equalsIgnoreCase("y")) {
@@ -91,6 +88,7 @@ public class JobHandler {
         }
       }
   }
+
   public static void view() {
     for(int i =0; i < size; i++) {
       Job j = jobs[i];
