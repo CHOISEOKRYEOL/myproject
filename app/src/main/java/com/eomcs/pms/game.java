@@ -1,12 +1,16 @@
 package com.eomcs.pms;
 
 import java.util.Scanner;
+import com.eomcs.pms.handler.JobHandler;
+import com.eomcs.pms.handler.PhysicalHandler;
+import com.eomcs.pms.handler.StatHandler;
+import com.eomcs.util.Prompt;
 
 public class game {
 
-  static Scanner scanner= new Scanner(System.in);
+  public static Scanner scanner= new Scanner(System.in);
 
-  static final int LENGTH = 4;
+  public static final int LENGTH = 100;
 
   static String inputString(String title) {
     System.out.print(title);
@@ -40,7 +44,9 @@ public class game {
             break loop;
         }
       }
-    scanner.close();
+    Prompt.close();
   }
+
 }
+
 
