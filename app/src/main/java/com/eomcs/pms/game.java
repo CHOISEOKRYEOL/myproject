@@ -40,7 +40,7 @@ public class game {
             PhysicalHandler.view();
             break;
           case "exit" :
-            System.out.println("Bye");
+            System.out.println("Bye~!");
             break loop;
         }
       }
