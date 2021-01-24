@@ -22,7 +22,7 @@ public class game {
     loop:
       while(true) {
         System.out.println();
-        System.out.print("명령");
+        System.out.print("stat,physical,setjob,viewjob");
         System.out.print(">");
         String commend = scanner.nextLine();
 
