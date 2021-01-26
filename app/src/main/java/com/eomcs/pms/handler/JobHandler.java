@@ -67,19 +67,19 @@ public class JobHandler {
     switch(Prompt.inputString("무기")) {
 
       case  "warrior" :
-        j.ace =("검");
+        j.ace =("longsword");
         break;
 
       case "magician" :
-        j.ace =("마법봉");
+        j.ace =("wand");
         break;
 
       case ("archer")  :
-        j.ace=("활");
+        j.ace=("bow");
       break;
 
       case ("thief") :
-        j.ace=("표창");
+        j.ace=("dagger");
 
     }
 
