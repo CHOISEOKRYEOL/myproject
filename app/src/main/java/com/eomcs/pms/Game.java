@@ -6,7 +6,7 @@ import com.eomcs.pms.handler.PhysicalHandler;
 import com.eomcs.pms.handler.StatHandler;
 import com.eomcs.util.Prompt;
 
-public class game {
+public class Game {
 
   public static Scanner scanner= new Scanner(System.in);
 

@@ -1,17 +1,17 @@
 package com.eomcs.pms.handler;
 
-import com.eomcs.pms.game;
+import com.eomcs.pms.Game;
 
 public class StatHandler {
 
   static int size = 0;
 
-  String str = game.scanner.nextLine();
+  String str = Game.scanner.nextLine();
 
   public static void view() {
 
     System.out.println("warrior, magician, archer, thief");
-    String str= game.scanner.nextLine();
+    String str= Game.scanner.nextLine();
     if(str.equalsIgnoreCase("warrior")) {
       System.out.println("힘: 10, 민첩: 4, 마나: 1, 공격속도: 5");
     }    

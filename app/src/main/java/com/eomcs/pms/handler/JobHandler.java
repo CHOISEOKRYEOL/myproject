@@ -1,12 +1,12 @@
 package com.eomcs.pms.handler;
 
-import com.eomcs.pms.game;
+import com.eomcs.pms.Game;
 import com.eomcs.util.Prompt;
 
 public class JobHandler {
 
   static final int LENGTH = 100;
-  static Job[] jobs = new Job[game.LENGTH];
+  static Job[] jobs = new Job[Game.LENGTH];
   static int size = 0;
 
 
@@ -27,7 +27,7 @@ public class JobHandler {
     Job j = new Job();
 
     System.out.println("생성하고 싶은 직업을 입력하시오(warrior, magician, archer, thief)");
-    switch(game.scanner.nextLine()) {
+    switch(Game.scanner.nextLine()) {
 
       case  "warrior" :
         j.warrior =Prompt.inputString("전사닉네임");
@@ -84,7 +84,7 @@ public class JobHandler {
     }
 
     System.out.println("계속 입력하시겠습니까? (y/N)");
-    if(!game.scanner.nextLine().equalsIgnoreCase("y")) {
+    if(!Game.scanner.nextLine().equalsIgnoreCase("y")) {
     }
     jobs[size++] = j;
   }

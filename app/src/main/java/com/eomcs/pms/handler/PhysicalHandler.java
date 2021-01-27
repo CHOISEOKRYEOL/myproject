@@ -1,7 +1,7 @@
 package com.eomcs.pms.handler;
 
 import java.util.Scanner;
-import com.eomcs.pms.game;
+import com.eomcs.pms.Game;
 
 public class PhysicalHandler {
 
@@ -12,7 +12,7 @@ public class PhysicalHandler {
   }
 
   static Scanner scanner= new Scanner(System.in);
-  static Physical[] physicals = new Physical[game.LENGTH]; 
+  static Physical[] physicals = new Physical[Game.LENGTH]; 
   static int size = 0;
 
 
