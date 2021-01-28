@@ -21,7 +21,6 @@ public class JobHandler {
     String ace;
   }
 
-
   public static void set() {
 
     Job j = new Job();
@@ -58,7 +57,6 @@ public class JobHandler {
       break;
       case ("w") :
         j.hair=("생머리");
-
     }
 
     System.out.println(); 
@@ -94,6 +92,54 @@ public class JobHandler {
       Job j = jobs[i];
       System.out.printf(" %s, %s, %s, %s, %s, %s, %s\n ",
           j.warrior,j.magician,j.archer,j.thief,j.sex,j.hair,j.ace);
+    }
+  }
+
+  public static void detail() {
+    System.out.println("[생성직업 특징 상세보기]");
+    System.out.print(">");
+    for(int i = 0; i <size; i++) {
+      Job j = jobs[i];
+      String s =Game.scanner.nextLine();
+      if(s.equalsIgnoreCase("warrior")) {
+        System.out.printf(" %s, %s, %s, %s\n ",
+            j.warrior,j.sex,j.hair,j.ace);
+      }else if(s.equalsIgnoreCase("magician")) {
+        System.out.printf(" %s, %s, %s, %s\n ",
+            j.magician,j.sex,j.hair,j.ace);
+      }else if(s.equalsIgnoreCase("archer")) {
+        System.out.printf(" %s, %s, %s, %s\n ",
+            j.archer,j.sex,j.hair,j.ace);
+      }else if(s.equalsIgnoreCase("thief")) {
+        System.out.printf(" %s, %s, %s, %s\n ",
+            j.thief,j.sex,j.hair,j.ace);
+      }else {
+        System.out.println("해당 직업의 정보가 없습니다");
+      }
+    }
+  }
+
+  public static void update() {
+    int i = 0;
+    Job j = jobs[i];
+    System.out.println("[생성직업 특징 변경]");
+    System.out.print(">");
+    for(; i <size; i++ ) {
+      if (Game.scanner.nextLine().equalsIgnoreCase("y")) {
+        if(Game.scanner.nextLine().equalsIgnoreCase("warrior")) {
+          String sex = Prompt.inputString(String.format("성별? ", j.sex));
+          String hair = Prompt.inputString(String.format("헤어스타일? ",j.hair));
+        }else if(Game.scanner.nextLine().equalsIgnoreCase("magician")) {
+          String sex = Prompt.inputString(String.format("성별? ", j.sex));
+          String hair = Prompt.inputString(String.format("헤어스타일? ",j.hair));
+        }else if(Game.scanner.nextLine().equalsIgnoreCase("archer")) {
+          String sex = Prompt.inputString(String.format("성별? ", j.sex));
+          String hair = Prompt.inputString(String.format("헤어스타일? ",j.hair));
+        }else if(Game.scanner.nextLine().equalsIgnoreCase("thief")) {
+          String sex = Prompt.inputString(String.format("성별? ", j.sex));
+          String hair = Prompt.inputString(String.format("헤어스타일? ",j.hair));
+        }
+      }
     }
   }
 }

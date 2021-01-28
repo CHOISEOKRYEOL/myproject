@@ -22,7 +22,7 @@ public class Game {
     loop:
       while(true) {
         System.out.println();
-        System.out.print("stat,physical,setjob,viewjob");
+        System.out.print("stat,physical,setjob,viewjob,setjob/detail,setjob/update");
         System.out.print(">");
         String commend = scanner.nextLine();
 
@@ -38,6 +38,12 @@ public class Game {
             break;
           case "physical" :
             PhysicalHandler.view();
+            break;
+          case "setjob/detail": 
+            JobHandler.detail(); 
+            break;
+          case "setjob/update": 
+            JobHandler.update(); 
             break;
           case "exit" :
             System.out.println("Bye~!");
