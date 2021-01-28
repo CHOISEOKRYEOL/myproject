@@ -22,7 +22,8 @@ public class Game {
     loop:
       while(true) {
         System.out.println();
-        System.out.print("stat, physical, setjob, viewjob, setjob/detail, setjob/update");
+        System.out.println("[캐릭터 생성]");
+        System.out.println("(stat, physical, setjob, viewjob, setjob/detail, setjob/update)");
         System.out.print(">");
         String commend = scanner.nextLine();
 
