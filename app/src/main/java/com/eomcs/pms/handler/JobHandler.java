@@ -27,7 +27,6 @@ public class JobHandler {
 
     System.out.println("생성하고 싶은 직업을 입력하시오(warrior, magician, archer, thief)");
     switch(Game.scanner.nextLine()) {
-
       case  "warrior" :
         j.warrior =Prompt.inputString("전사닉네임");
         break;
@@ -123,21 +122,25 @@ public class JobHandler {
     int i = 0;
     Job j = jobs[i];
     System.out.println("[생성직업 특징 변경]");
+    System.out.println("[특징 변경할 직업]");
     System.out.print(">");
-    for(; i <size; i++ ) {
-      if (Game.scanner.nextLine().equalsIgnoreCase("y")) {
-        if(Game.scanner.nextLine().equalsIgnoreCase("warrior")) {
-          String sex = Prompt.inputString(String.format("성별? ", j.sex));
-          String hair = Prompt.inputString(String.format("헤어스타일? ",j.hair));
-        }else if(Game.scanner.nextLine().equalsIgnoreCase("magician")) {
-          String sex = Prompt.inputString(String.format("성별? ", j.sex));
-          String hair = Prompt.inputString(String.format("헤어스타일? ",j.hair));
-        }else if(Game.scanner.nextLine().equalsIgnoreCase("archer")) {
-          String sex = Prompt.inputString(String.format("성별? ", j.sex));
-          String hair = Prompt.inputString(String.format("헤어스타일? ",j.hair));
-        }else if(Game.scanner.nextLine().equalsIgnoreCase("thief")) {
-          String sex = Prompt.inputString(String.format("성별? ", j.sex));
-          String hair = Prompt.inputString(String.format("헤어스타일? ",j.hair));
+    for(; i < size; i++) {
+      if(Game.scanner.nextLine().equalsIgnoreCase("warrior")) {
+        String sex = Prompt.inputString(String.format("성별? ", j.sex));
+        String hair = Prompt.inputString(String.format("헤어스타일? ",j.hair));
+      }else if(Game.scanner.nextLine().equalsIgnoreCase("magician")) {
+        String sex = Prompt.inputString(String.format("성별? ", j.sex));
+        String hair = Prompt.inputString(String.format("헤어스타일? ",j.hair));
+      }else if(Game.scanner.nextLine().equalsIgnoreCase("archer")) {
+        String sex = Prompt.inputString(String.format("성별? ", j.sex));
+        String hair = Prompt.inputString(String.format("헤어스타일? ",j.hair));
+      }else if(Game.scanner.nextLine().equalsIgnoreCase("thief")) {
+        String sex = Prompt.inputString(String.format("성별? ", j.sex));
+        String hair = Prompt.inputString(String.format("헤어스타일? ",j.hair));
+
+        if(Game.scanner.nextLine().equalsIgnoreCase("y")) {
+          j.sex = sex;
+          j.hair = hair;
         }
       }
     }

@@ -22,9 +22,11 @@ public class Game {
     loop:
       while(true) {
         System.out.println();
-        System.out.print("stat,physical,setjob,viewjob,setjob/detail,setjob/update");
+        System.out.print("stat, physical, setjob, viewjob, setjob/detail, setjob/update");
         System.out.print(">");
         String commend = scanner.nextLine();
+
+        System.out.println();
 
         switch(commend) {
           case "setjob": 
