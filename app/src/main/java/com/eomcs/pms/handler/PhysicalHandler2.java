@@ -3,7 +3,7 @@ package com.eomcs.pms.handler;
 import java.util.Scanner;
 import com.eomcs.pms.Game;
 
-public class PhysicalHandler {
+public class PhysicalHandler2 {
 
   public static class Physical {
 
