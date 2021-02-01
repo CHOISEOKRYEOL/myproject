@@ -1,6 +1,7 @@
 package com.eomcs.pms;
 
 import java.util.Scanner;
+import com.eomcs.pms.handler.FoodHandler;
 import com.eomcs.pms.handler.MemberHandler;
 import com.eomcs.pms.handler.TrainingHandler;
 
@@ -23,12 +24,6 @@ public class Soccer {
           case "/member/list":
             MemberHandler.list();
             break;
-          case "/training/add":
-            TrainingHandler.add();
-            break;
-          case "/training/list":
-            TrainingHandler.list();
-            break;
           case "/member/detail":
             MemberHandler.detail();
             break;
@@ -37,6 +32,18 @@ public class Soccer {
             break;
           case "/member/delete":
             MemberHandler.delete();
+            break;
+          case "/training/add":
+            TrainingHandler.add();
+            break;
+          case "/training/list":
+            TrainingHandler.list();
+            break;
+          case "/food/add":
+            FoodHandler.add();
+            break;
+          case "/food/list":
+            FoodHandler.list();
             break;
           case "exit":
             System.out.println("안녕!");
