@@ -1,6 +1,5 @@
-package com.eomcs.pms.handler;
+package com.eomcs.pms.Game;
 
-import com.eomcs.pms.Game;
 import com.eomcs.util.Prompt;
 
 public class JobHandler {

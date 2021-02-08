@@ -31,7 +31,7 @@ public class FoodHandler {
     System.out.println("[식단 관리]");
 
     while (true) {
-      String name = Prompt.inputString("수강생 이름 ");
+      String name = Prompt.inputString("선수 이름 ");
       for (int i = 0; i < MemberHandler.size; i++) {
         if (isMember(name)) {
           f.name = name;
@@ -41,7 +41,7 @@ public class FoodHandler {
       if (f.name!= null) {
         break;
       }
-      System.out.println("등록된 회원이 아닙니다.");
+      System.out.println("등록된 선수가 아닙니다.");
     }
 
     f.carbohydrate = Prompt.inputString("탄수화물> ");
@@ -52,9 +52,8 @@ public class FoodHandler {
 
     if (size >= foods.length) {
       foods = Arrays.copyOf(foods, size + (size >> 1));
-
-      foods[size++] = f;
     }
+    foods[size++] = f;
   }
 
   public static void list() {

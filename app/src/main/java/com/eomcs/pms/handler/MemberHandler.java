@@ -8,7 +8,7 @@ public class MemberHandler {
   static class Member {
     int no;
     String name;
-    String nationality;
+    String nationality; 
     String position;
   } 
 
