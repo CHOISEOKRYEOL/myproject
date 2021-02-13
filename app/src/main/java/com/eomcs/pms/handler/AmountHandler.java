@@ -17,6 +17,10 @@ public class AmountHandler {
   static int size = 0;
   static Amount[] amounts = new Amount[DEFAULT_CAPACITY];
   static int i = 0;
+  static int fowardSum;
+  static int midfielderSum;
+  static int defenderSum;
+  static  long total;
 
   static int[] number = new int[DEFAULT_CAPACITY];
   static int[] fowardprice = new int[DEFAULT_CAPACITY];
@@ -38,19 +42,23 @@ public class AmountHandler {
     if (size >= amounts.length) {
       amounts = Arrays.copyOf(amounts, size + (size >> 1));
     }
+    amounts[size++] = a;
   }
 
   public static void list() {
 
     Amount a = amounts[i];
 
-    int fowardSum = a.fowardprice;
-    int midfielderSum = a.midfielderprice;
-    int defenderSum = a.defenderprice; 
-    long total = a.fowardprice + a.midfielderprice + a.defenderprice;
+    for(i = 0; i < amounts.length; i++) {
+      fowardSum += a.fowardprice; 
+      midfielderSum += a.midfielderprice;
+      defenderSum += a.defenderprice;
+      total  += a.fowardprice + a.midfielderprice + a.defenderprice;
+    } 
+
 
     System.out.println("[영입 합계]");
-    int number = Prompt.inputInt("공격수:1\n 미드필더:2\n 수비수:3\n 총가격:4\n");
+    int number = Prompt.inputInt("공격수:1\n미드필더:2\n수비수:3\n총가격:4\n>>>>>>>>");
     switch(number) {
       case 1:
         System.out.println(fowardSum);
