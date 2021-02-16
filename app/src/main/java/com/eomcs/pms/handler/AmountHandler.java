@@ -17,10 +17,10 @@ public class AmountHandler {
   static int size = 0;
   static Amount[] amounts = new Amount[DEFAULT_CAPACITY];
   static int i = 0;
-  static int fowardSum;
-  static int midfielderSum;
-  static int defenderSum;
-  static  long total;
+  static int fowardSum = 0;
+  static int midfielderSum = 0;;
+  static int defenderSum = 0;
+  static  long total =0;
 
   static int[] number = new int[DEFAULT_CAPACITY];
   static int[] fowardprice = new int[DEFAULT_CAPACITY];
@@ -35,9 +35,9 @@ public class AmountHandler {
 
     System.out.println("[포지션 별 영입 가격]");
     System.out.println();
-    a.fowardprice = Prompt.inputInt("공격수 가격 ");
-    a.midfielderprice = Prompt.inputInt("미드필더 가격 ");
-    a.defenderprice = Prompt.inputInt("수비수 가격 ");
+    a.fowardprice = Prompt.inputInt("공격수 영입금액 ");
+    a.midfielderprice = Prompt.inputInt("미드필더 영입금액 ");
+    a.defenderprice = Prompt.inputInt("수비수 영입금액 ");
 
     if (size >= amounts.length) {
       amounts = Arrays.copyOf(amounts, size + (size >> 1));
@@ -47,17 +47,17 @@ public class AmountHandler {
 
   public static void list() {
 
-    Amount a = amounts[i];
 
-    for(i = 0; i < amounts.length; i++) {
-      fowardSum += a.fowardprice; 
-      midfielderSum += a.midfielderprice;
-      defenderSum += a.defenderprice;
-      total  += a.fowardprice + a.midfielderprice + a.defenderprice;
-    } 
+    for(int i = 0; i < size; i++) {
+      fowardSum += amounts[i].fowardprice; 
+      midfielderSum += amounts[i].midfielderprice;
+      defenderSum += amounts[i].defenderprice;
+      total  += amounts[i].fowardprice + amounts[i].midfielderprice + amounts[i].defenderprice;
+    }
 
 
-    System.out.println("[영입 합계]");
+
+    System.out.println("[영입 합계 금액]");
     int number = Prompt.inputInt("공격수:1\n미드필더:2\n수비수:3\n총가격:4\n>>>>>>>>");
     switch(number) {
       case 1:
@@ -73,6 +73,10 @@ public class AmountHandler {
         System.out.println(total);
         break;
     }
+    fowardSum = 0;
+    midfielderSum = 0;
+    defenderSum = 0;
+    total = 0;
   }
 
 }
