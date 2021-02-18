@@ -1,29 +1,30 @@
-package com.eomcs.pms.handler;
+package com.eomcs.util;
 
-import com.eomcs.pms.handler.FoodHandler.Food;
+import com.eomcs.pms.domain.Member;
 
-public class FoodList {
+public class List {
+
   static final int DEFAULT_CAPACITY = 3;
   static int size = 0;
-  static Food[] foods = new Food[DEFAULT_CAPACITY];
+  static Member[] members = new Member[DEFAULT_CAPACITY];
 
-  void add(Food f) {
-    foods[size++] = f;
+  public void add(Member m) {
+    members[size++] = m;
   }
 
-  Food[] toArray() {
-    Food[] arr = new Food[size];
+  public Member[] toArray() {
+    Member[] arr = new Member[size];
     for(int i = 0; i < size; i++) {
-      arr[i] = foods[i];
+      arr[i] = members[i];
     }
     return arr;
   }
 
-  Food get(int memberNo) {
+  public Member get(int memberNo) {
     int i = indexOf(memberNo);
     if(i == -1)
       return null;
-    return foods[i];
+    return members[i];
   }
 
   void delete(int memberNo) {
@@ -32,28 +33,27 @@ public class FoodList {
     if(index == -1)
       return;
     for (int x = index + 1; x < this.size; x++) {
-      this.foods[x-1] = this.foods[x];
+      this.members[x-1] = this.members[x];
     }
-    this.foods[--this.size] = null;
+    this.members[--this.size] = null;
   }
 
   public boolean exist(String name) {
     for (int i = 0; i < this.size; i++) {
-      if (name.equals(this.foods[i].name)) {
+      if (name.equals(this.members[i].name)) {
         return true;
       }
     }
     return false;
   }
 
-  int indexOf(int foodsNo) {
+  int indexOf(int memberNo) {
     for (int i = 0; i < this.size; i++) {
-      Food food = this.foods[i];
-      if (food.no == foodsNo) {
+      Member member = this.members[i];
+      if (member.no == memberNo) {
         return i;
       }
     }
     return -1;
   }
-
 }

@@ -11,6 +11,7 @@ public class AmountHandler {
     int fowardprice;
     int midfielderprice;
     int defenderprice;
+
   } 
 
   static final int DEFAULT_CAPACITY = 3;
@@ -18,9 +19,9 @@ public class AmountHandler {
   static Amount[] amounts = new Amount[DEFAULT_CAPACITY];
   static int i = 0;
   static int fowardSum = 0;
-  static int midfielderSum = 0;;
+  static int midfielderSum = 0;
   static int defenderSum = 0;
-  static  long total =0;
+  static long total =0;
 
   static int[] number = new int[DEFAULT_CAPACITY];
   static int[] fowardprice = new int[DEFAULT_CAPACITY];

@@ -5,6 +5,8 @@ import com.eomcs.util.Prompt;
 
 public class MemberHandler {
 
+  private MemberList memberList = new MemberList();
+
   static class Member {
     int no;
     String name;
@@ -41,7 +43,8 @@ public class MemberHandler {
   }
 
   public static void list() {
-    for (int i = 0; i < size; i++) {
+
+    for (int i =0; i <size; i++) {
       Member m = members[i];
       System.out.printf("%d, %s, %s, %s\n", 
           m.no, m.name, m.nationality, m.position);

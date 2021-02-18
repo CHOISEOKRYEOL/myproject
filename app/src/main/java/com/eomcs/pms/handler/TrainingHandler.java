@@ -15,6 +15,7 @@ public class TrainingHandler {
     public Object endDate;
     int status;
     String stateLabel;
+    public int no;
   } 
 
   static final int DEFAULT_CAPACITY = 3;
@@ -79,6 +80,7 @@ public class TrainingHandler {
           t.name,t.title,t.content, t.startDate, t.endDate, t.stateLabel);
     }
   }
+
 
   static boolean isMember(String name) {
     for (int i = 0; i < MemberHandler.size; i++) {

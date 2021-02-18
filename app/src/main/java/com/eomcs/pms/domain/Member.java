@@ -1,8 +1,8 @@
 package com.eomcs.pms.domain;
 
 public class Member {
-  private int no;
-  private String name;
+  public int no;
+  public String name;
   private String nationality;
   private String position;
 
@@ -30,6 +30,4 @@ public class Member {
   public void setPosition(String position) {
     this.position = position;
   }
-
-
 }

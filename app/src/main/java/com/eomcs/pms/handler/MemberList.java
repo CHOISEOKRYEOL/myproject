@@ -1,6 +1,6 @@
 package com.eomcs.pms.handler;
 
-import com.eomcs.pms.handler.MemberHandler.Member;
+import com.eomcs.pms.domain.Member;
 
 public class MemberList {
 
@@ -8,11 +8,12 @@ public class MemberList {
   static int size = 0;
   static Member[] members = new Member[DEFAULT_CAPACITY];
 
-  void add(Member m) {
-    members[size++] = m;
+  public void add(Member m) {
+    members[size++] =  m;
   }
 
-  Member[] toArray() {
+
+  public Member[] toArray() {
     Member[] arr = new Member[size];
     for(int i = 0; i < size; i++) {
       arr[i] = members[i];
@@ -20,7 +21,7 @@ public class MemberList {
     return arr;
   }
 
-  Member get(int memberNo) {
+  public Member get(int memberNo) {
     int i = indexOf(memberNo);
     if(i == -1)
       return null;
@@ -56,5 +57,4 @@ public class MemberList {
     }
     return -1;
   }
-
 }
