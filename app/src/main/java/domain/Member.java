@@ -1,4 +1,4 @@
-package com.eomcs.pms.domain;
+package domain;
 
 public class Member {
   public int no;

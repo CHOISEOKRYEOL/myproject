@@ -1,12 +1,14 @@
 package com.eomcs.pms;
 
+import java.util.Hashtable;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.Stack;
 import com.eomcs.pms.handler.AmountHandler;
 import com.eomcs.pms.handler.FoodHandler;
 import com.eomcs.pms.handler.MemberHandler;
 import com.eomcs.pms.handler.TrainingHandler;
-import com.eomcs.util.Prompt;
+import Util.Prompt;
 
 public class Soccer {
 
@@ -16,8 +18,31 @@ public class Soccer {
 
   public static void main(String[] args) throws CloneNotSupportedException {
 
+    Map<String, String> map = new Hashtable<String,String>();
+    map.put("soccer", "1111");
+
     loop:
       while (true) {
+
+        while(true) {
+          System.out.println("아이디와 비밀번호를 입력하세요");
+          System.out.print("아이디: ");
+          String id = scanner.nextLine();
+          System.out.print("비밀번호: ");
+          String password = scanner.nextLine();
+          System.out.println();
+          if(map.containsKey(id)) {
+            if(map.get(id).equals(password)) {
+              System.out.println("로그인되었습니다.");
+              System.out.println();
+              break;
+            }else {
+              System.out.println("비밀번호가 일치하지 않습니다.");
+            }
+          }else {
+            System.out.println("입력하신 아이디가 존재하지 않습니다.");
+          }
+        }
         System.out.println("명령>");
         String command = scanner.nextLine();
 

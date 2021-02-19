@@ -4,7 +4,7 @@ import java.util.Scanner;
 import com.eomcs.pms.Game.Game.JobHandler;
 import com.eomcs.pms.Game.Game.PhysicalHandler;
 import com.eomcs.pms.Game.Game.StatHandler;
-import com.eomcs.util.Prompt;
+import Util.Prompt;
 
 public class Game {
 

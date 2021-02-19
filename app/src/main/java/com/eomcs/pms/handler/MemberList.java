@@ -1,6 +1,6 @@
 package com.eomcs.pms.handler;
 
-import com.eomcs.pms.domain.Member;
+import domain.Member;
 
 public class MemberList {
 

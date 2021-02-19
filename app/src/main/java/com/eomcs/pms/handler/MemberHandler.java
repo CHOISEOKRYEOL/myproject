@@ -1,7 +1,7 @@
 package com.eomcs.pms.handler;
 
 import java.util.Arrays;
-import com.eomcs.util.Prompt;
+import Util.Prompt;
 
 public class MemberHandler {
 

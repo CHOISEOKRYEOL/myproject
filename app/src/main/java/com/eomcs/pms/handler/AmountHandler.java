@@ -1,7 +1,7 @@
 package com.eomcs.pms.handler;
 
 import java.util.Arrays;
-import com.eomcs.util.Prompt;
+import Util.Prompt;
 
 public class AmountHandler {
 
@@ -55,7 +55,6 @@ public class AmountHandler {
       defenderSum += amounts[i].defenderprice;
       total  += amounts[i].fowardprice + amounts[i].midfielderprice + amounts[i].defenderprice;
     }
-
 
 
     System.out.println("[영입 합계 금액]");

@@ -1,6 +1,6 @@
-package com.eomcs.util;
+package Util;
 
-import com.eomcs.pms.domain.Member;
+import domain.Member;
 
 public class List {
 

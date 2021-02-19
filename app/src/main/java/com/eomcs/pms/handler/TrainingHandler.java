@@ -2,7 +2,7 @@ package com.eomcs.pms.handler;
 
 import java.sql.Date;
 import java.util.Arrays;
-import com.eomcs.util.Prompt;
+import Util.Prompt;
 
 public class TrainingHandler {
 
