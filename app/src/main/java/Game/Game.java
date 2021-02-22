@@ -1,10 +1,10 @@
-package com.eomcs.pms.Game;
+package Game;
 
 import java.util.Scanner;
-import com.eomcs.pms.Game.Game.JobHandler;
-import com.eomcs.pms.Game.Game.PhysicalHandler;
-import com.eomcs.pms.Game.Game.StatHandler;
-import Util.Prompt;
+import Game.Game.JobHandler;
+import Game.Game.PhysicalHandler;
+import Game.Game.StatHandler;
+import util.Prompt;
 
 public class Game {
 

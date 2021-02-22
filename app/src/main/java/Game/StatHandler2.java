@@ -1,4 +1,4 @@
-package com.eomcs.pms.Game;
+package Game;
 
 public class StatHandler2 {
 

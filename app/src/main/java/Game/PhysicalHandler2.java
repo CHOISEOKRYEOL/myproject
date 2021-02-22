@@ -1,8 +1,8 @@
-package com.eomcs.pms.Game;
+package Game;
 
 import java.util.Scanner;
 
-public class PhysicalHandler {
+public class PhysicalHandler2 {
 
   public static class Physical {
 

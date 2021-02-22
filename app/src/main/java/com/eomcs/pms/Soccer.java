@@ -4,11 +4,11 @@ import java.util.Hashtable;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Stack;
-import com.eomcs.pms.handler.AmountHandler;
-import com.eomcs.pms.handler.FoodHandler;
-import com.eomcs.pms.handler.MemberHandler;
-import com.eomcs.pms.handler.TrainingHandler;
-import Util.Prompt;
+import handler.AmountHandler;
+import handler.FoodHandler;
+import handler.MemberHandler;
+import handler.TrainingHandler;
+import util.Prompt;
 
 public class Soccer {
 
@@ -21,28 +21,29 @@ public class Soccer {
     Map<String, String> map = new Hashtable<String,String>();
     map.put("soccer", "1111");
 
+
+    while(true) {
+      System.out.println("아이디와 비밀번호를 입력하세요");
+      System.out.print("아이디: ");
+      String id = scanner.nextLine();
+      System.out.print("비밀번호: ");
+      String password = scanner.nextLine();
+      System.out.println();
+      if(map.containsKey(id)) {
+        if(map.get(id).equals(password)) {
+          System.out.println("로그인되었습니다.");
+          System.out.println();
+          break;
+        }else {
+          System.out.println("비밀번호가 일치하지 않습니다.");
+        }
+      }else {
+        System.out.println("입력하신 아이디가 존재하지 않습니다.");
+      }
+    }
+
     loop:
       while (true) {
-
-        while(true) {
-          System.out.println("아이디와 비밀번호를 입력하세요");
-          System.out.print("아이디: ");
-          String id = scanner.nextLine();
-          System.out.print("비밀번호: ");
-          String password = scanner.nextLine();
-          System.out.println();
-          if(map.containsKey(id)) {
-            if(map.get(id).equals(password)) {
-              System.out.println("로그인되었습니다.");
-              System.out.println();
-              break;
-            }else {
-              System.out.println("비밀번호가 일치하지 않습니다.");
-            }
-          }else {
-            System.out.println("입력하신 아이디가 존재하지 않습니다.");
-          }
-        }
         System.out.println("명령>");
         String command = scanner.nextLine();
 
@@ -96,8 +97,10 @@ public class Soccer {
           System.out.println("--------------------------------------------");
           System.out.printf("명령어 실행 중 오류 발생: %s - %s\n", e.getClass().getName(), e.getMessage());
           System.out.println("--------------------------------------------");
+        }finally {
+          System.out.println(); 
         }
-        System.out.println(); 
+
       }
     scanner.close();
   }

@@ -1,4 +1,4 @@
-package com.eomcs.pms.handler;
+package handler;
 
 import domain.Member;
 
