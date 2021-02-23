@@ -3,13 +3,13 @@ package domain;
 import java.sql.Date;
 
 public class Training {
-  private String name;
-  private String title;
-  private String content;
-  private Date startDate;
-  private Object endDate;
-  private int status;
-  private String stateLabel;
+  public String name;
+  public String title;
+  public String content;
+  public Date startDate;
+  public Object endDate;
+  public int status;
+  public String stateLabel;
 
 
   public String getName() {

@@ -1,18 +1,13 @@
 package handler;
 
 import java.util.Arrays;
+import domain.Member;
 import util.Prompt;
 
 public class MemberHandler {
 
   private MemberList memberList = new MemberList();
 
-  static class Member {
-    int no;
-    String name;
-    String nationality; 
-    String position;
-  } 
 
   static final int DEFAULT_CAPACITY = 3;
   static int size = 0;

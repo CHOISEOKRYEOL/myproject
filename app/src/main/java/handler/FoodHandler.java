@@ -1,28 +1,21 @@
 package handler;
 
 import java.util.Arrays;
+import domain.Food;
 import util.Prompt;
 
 public class FoodHandler {
 
-  static class Food {
-    String name;
-    String carbohydrate;
-    String protein;
-    String calcium;
-    String fat;
-    String vitamin;
-  } 
 
   static final int DEFAULT_CAPACITY = 3;
   static int size = 0;
   static Food[] foods = new Food[DEFAULT_CAPACITY];
 
-  static String[] carbohydrate = new String[DEFAULT_CAPACITY];
-  static String[] protein = new String[DEFAULT_CAPACITY];
-  static String[] calcium = new String[DEFAULT_CAPACITY];
-  static String[] fat = new String[DEFAULT_CAPACITY];
-  static String[] vitamin = new String[DEFAULT_CAPACITY];
+  static int[] carbohydrate = new int[DEFAULT_CAPACITY];
+  static int[] protein = new int[DEFAULT_CAPACITY];
+  static int[] calcium = new int[DEFAULT_CAPACITY];
+  static int[] fat = new int[DEFAULT_CAPACITY];
+  static int[] vitamin = new int[DEFAULT_CAPACITY];
 
   public static void add() {
 
@@ -44,16 +37,24 @@ public class FoodHandler {
       System.out.println("등록된 선수가 아닙니다.");
     }
 
-    f.carbohydrate = Prompt.inputString("탄수화물> ");
-    f.protein = Prompt.inputString("단백질> ");
-    f.calcium = Prompt.inputString("칼슘> ");
-    f.fat = Prompt.inputString("지방> ");
-    f.vitamin = Prompt.inputString("비타민> ");
+    f.setCarbohydrate( Prompt.inputInt("탄수화물> "));
+    f.setProtein(Prompt.inputInt("단백질> "));
+    f.setCalcium(Prompt.inputInt("칼슘> "));
+    f.setFat(Prompt.inputInt("지방> "));
+    f.setVitamin(Prompt.inputInt("비타민> ")) ;
 
     if (size >= foods.length) {
       foods = Arrays.copyOf(foods, size + (size >> 1));
     }
     foods[size++] = f;
+  }
+
+  private static void setProtein(int inputInt) {
+
+  }
+
+  private static void setCarbohydrate(int inputInt) {
+
   }
 
   public static void list() {

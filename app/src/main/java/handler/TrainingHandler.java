@@ -2,21 +2,10 @@ package handler;
 
 import java.sql.Date;
 import java.util.Arrays;
+import domain.Training;
 import util.Prompt;
 
 public class TrainingHandler {
-
-
-  static class Training {
-    String name;
-    String title;
-    String content;
-    Date startDate;
-    public Object endDate;
-    int status;
-    String stateLabel;
-    public int no;
-  } 
 
   static final int DEFAULT_CAPACITY = 3;
   static int size = 0;

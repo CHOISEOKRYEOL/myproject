@@ -1,18 +1,11 @@
 package handler;
 
 import java.util.Arrays;
+import domain.Amount;
 import util.Prompt;
 
 public class AmountHandler {
 
-  static class Amount {
-
-    int number;
-    int fowardprice;
-    int midfielderprice;
-    int defenderprice;
-
-  } 
 
   static final int DEFAULT_CAPACITY = 3;
   static int size = 0;

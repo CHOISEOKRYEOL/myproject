@@ -3,8 +3,8 @@ package domain;
 public class Member {
   public int no;
   public String name;
-  private String nationality;
-  private String position;
+  public String nationality;
+  public String position;
 
   public int getNo() {
     return no;
