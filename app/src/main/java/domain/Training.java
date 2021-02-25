@@ -1,8 +1,11 @@
 package domain;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Training {
+public class Training implements Serializable{
+
+  private static final long serialVersionUID = 4L;
   public String name;
   public String title;
   public String content;

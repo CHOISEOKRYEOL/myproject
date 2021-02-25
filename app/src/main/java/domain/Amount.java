@@ -1,6 +1,9 @@
 package domain;
 
-public class Amount {
+public class Amount implements java.io.Serializable{
+
+  private static final long serialVersionUID = 1L;
+
   public int number;
   public int fowardprice;
   public int midfielderprice;

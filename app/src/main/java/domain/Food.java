@@ -1,6 +1,10 @@
 package domain;
 
-public class Food {
+import java.io.Serializable;
+
+public class Food implements Serializable{
+
+  private static final long serialVersionUID = 2L;
   public String name;
   public int carbohydrate;
   public int protein;
