@@ -6,9 +6,6 @@ import util.Prompt;
 
 public class MemberHandler {
 
-  private MemberList memberList = new MemberList();
-
-
   static final int DEFAULT_CAPACITY = 3;
   static int size = 0;
   static Member[] members = new Member[DEFAULT_CAPACITY];

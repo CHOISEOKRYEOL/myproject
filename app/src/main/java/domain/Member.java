@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Member implements Serializable{
 
-  private static final long serialVersionUID = 3L;
+  private static final long serialVersionUID = 1L;
   public int no;
   public String name;
   public String nationality;

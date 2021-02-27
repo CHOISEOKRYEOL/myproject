@@ -21,7 +21,7 @@ public class Prompt {
     return Date.valueOf(inputString(title));
   }
 
-  static void close() {
+  public static void close() {
     scanner.close();
   }
 }

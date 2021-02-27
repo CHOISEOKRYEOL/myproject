@@ -5,7 +5,7 @@ import java.sql.Date;
 
 public class Training implements Serializable{
 
-  private static final long serialVersionUID = 4L;
+  private static final long serialVersionUID = 1L;
   public String name;
   public String title;
   public String content;
@@ -57,6 +57,7 @@ public class Training implements Serializable{
   public void setStateLabel(String stateLabel) {
     this.stateLabel = stateLabel;
   }
+
 
 
 }
