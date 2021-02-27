@@ -8,6 +8,7 @@ public class Amount implements java.io.Serializable{
   public int fowardprice;
   public int midfielderprice;
   public int defenderprice;
+
   public int getNumber() {
     return number;
   }

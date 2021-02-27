@@ -1,25 +1,11 @@
 package handler;
 
-import java.sql.Date;
-import java.util.Arrays;
 import domain.Training;
 import util.Prompt;
 
 public class TrainingHandler {
 
-  static final int DEFAULT_CAPACITY = 3;
-  static int size = 0;
-  static Training[] trainings = new Training[DEFAULT_CAPACITY];
-
-  static int[] no = new int[DEFAULT_CAPACITY];
-  static String[] title = new String[DEFAULT_CAPACITY];
-  static String[] content = new String[DEFAULT_CAPACITY];
-  static Date[] startDate = new Date[DEFAULT_CAPACITY];
-  static Date[] endDate = new Date[DEFAULT_CAPACITY];
-  static int[] status = new int[DEFAULT_CAPACITY];
-  static String[] stateLabel = new String[DEFAULT_CAPACITY];
-
-
+  static TrainingList trainingList = new TrainingList();
 
   public static void add() {
 
@@ -29,7 +15,7 @@ public class TrainingHandler {
 
     while (true) {
       String name = Prompt.inputString("이름 ");
-      for (int i = 0; i < MemberHandler.size; i++) {
+      for (int i = 0; i < MemberList.size; i++) {
         if (isMember(name)) {
           t.name = name;
           break;
@@ -54,17 +40,14 @@ public class TrainingHandler {
         t.stateLabel = "완료";
         break;
     }
-
-    if (size >= trainings.length) {
-      trainings = Arrays.copyOf(trainings, size + (size >> 1));
-    }
-    trainings[size++] = t;
+    TrainingList.add(t);
   }
 
   public static void list() {
 
-    for (int i = 0; i < size; i++) {
-      Training t = trainings[i];
+    Training[] trainings = trainingList.toArray();
+
+    for (Training t : trainings) {
       System.out.printf(" %s, %s, %s, %s, %s, %s\n",
           t.name,t.title,t.content, t.startDate, t.endDate, t.stateLabel);
     }
@@ -72,8 +55,8 @@ public class TrainingHandler {
 
 
   static boolean isMember(String name) {
-    for (int i = 0; i < MemberHandler.size; i++) {
-      if (name.equals(MemberHandler.members[i].name)) {
+    for (int i = 0; i < MemberList.size; i++) {
+      if (name.equals(MemberList.members[i].name)) {
         return true;
       }
     }

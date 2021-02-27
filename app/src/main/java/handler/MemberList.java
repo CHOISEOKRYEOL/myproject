@@ -4,7 +4,7 @@ import domain.Member;
 
 public class MemberList {
 
-  static final int DEFAULT_CAPACITY = 3;
+  static final int DEFAULT_CAPACITY = 100;
   static int size = 0;
   static Member[] members = new Member[DEFAULT_CAPACITY];
 

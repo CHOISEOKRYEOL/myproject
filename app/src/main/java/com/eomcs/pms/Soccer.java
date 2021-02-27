@@ -9,6 +9,7 @@ import java.io.FileOutputStream;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Stack;
@@ -24,7 +25,7 @@ import util.Prompt;
 
 public class Soccer {
 
-  static ArrayList<Member> memberList = new ArrayList<>();
+  static LinkedList<Member> memberList = new LinkedList<>();
   static ArrayList<Training> trainingList = new ArrayList<>();
   static ArrayList<Food> foodList = new ArrayList<>();
   static ArrayList<Amount> amountList = new ArrayList<>();
@@ -35,13 +36,13 @@ public class Soccer {
 
   public static void main(String[] args) throws CloneNotSupportedException {
 
+    Map<String, String> map = new Hashtable<String,String>();
+    map.put("soccer", "1111");
+
     loadMembers();
     loadTrainings();
     loadFoods();
     loadAmounts();
-
-    Map<String, String> map = new Hashtable<String,String>();
-    map.put("soccer", "1111");
 
 
     while(true) {
@@ -153,14 +154,15 @@ public class Soccer {
       int size = in.readInt();
 
       for(int i = 0; i < size; i++) {
-        Member member = new Member();
-        member.setNo(in.readInt());
-        member.setName(in.readUTF());
-        member.setNationality(in.readUTF());
-        member.setPosition(in.readUTF());
+        Member m = new Member();
+        m.setNo(in.readInt());
+        m.setName(in.readUTF());
+        m.setNationality(in.readUTF());
+        m.setPosition(in.readUTF());
 
-        memberList.add(member);
+        memberList.add(m);
       }
+      System.out.println("선수 데이터 로딩!");
     } catch (Exception e) {
       System.out.println("선수 데이터 로딩 중 오류 발생!");
     }
@@ -169,15 +171,16 @@ public class Soccer {
     try(DataOutputStream out = new DataOutputStream(
         new BufferedOutputStream(
             new FileOutputStream("members.data")))) {
+
       out.writeInt(memberList.size());
 
-      for(Member member : memberList) {
-        out.writeInt(member.getNo());
-        out.writeUTF(member.getName());
-        out.writeUTF(member.getNationality());
-        out.writeUTF(member.getPosition());
+      for(Member m : memberList) {
+        out.writeInt(m.getNo());
+        out.writeUTF(m.getName());
+        out.writeUTF(m.getNationality());
+        out.writeUTF(m.getPosition());
       }
-
+      System.out.println("선수 데이터 저장 완료!");
     }catch (Exception e) {
       System.out.println(" 선수 데이터를 파일로 저장하는 중에 오류 발생!");
     }
@@ -190,14 +193,14 @@ public class Soccer {
       int size = in.readInt();
 
       for(int i = 0; i < size; i++) {
-        Training training = new Training();
-        training.setName(in.readUTF());
-        training.setTitle(in.readUTF());
-        training.setContent(in.readUTF());
-        training.setStartDate(Date.valueOf(in.readUTF()));
-        training.setEndDate(Date.valueOf(in.readUTF()));
+        Training t = new Training();
+        t.setName(in.readUTF());
+        t.setTitle(in.readUTF());
+        t.setContent(in.readUTF());
+        t.setStartDate(Date.valueOf(in.readUTF()));
+        t.setEndDate(Date.valueOf(in.readUTF()));
 
-        trainingList.add(training);
+        trainingList.add(t);
       }
       System.out.println("선수 훈련 데이터 로딩!");
     } catch (Exception e) {
@@ -211,13 +214,14 @@ public class Soccer {
 
       out.writeInt(trainingList.size());
 
-      for(Training training : trainingList) {
-        out.writeUTF(training.getName());
-        out.writeUTF(training.getTitle());
-        out.writeUTF(training.getContent());
-        out.writeUTF(training.getStartDate().toString());
-        out.writeUTF(training.getEndDate().toString());
+      for(Training t : trainingList) {
+        out.writeUTF(t.getName());
+        out.writeUTF(t.getTitle());
+        out.writeUTF(t.getContent());
+        out.writeUTF(t.getStartDate().toString());
+        out.writeUTF(t.getEndDate().toString());
       }
+      System.out.println("선수 훈련 데이터 저장 완료!");
     }catch (Exception e) {
       System.out.println(" 선수 훈련 데이터를 파일로 저장하는 중에 오류 발생!");
     }
@@ -230,15 +234,15 @@ public class Soccer {
       int size = in.readInt();
 
       for(int i = 0; i < size; i++) {
-        Food food = new Food();
-        food.setName(in.readUTF());
-        food.setCarbohydrate(in.readInt());
-        food.setProtein(in.readInt());
-        food.setCalcium(in.readInt());
-        food.setFat(in.readInt());
-        food.setVitamin(in.readInt());
+        Food f = new Food();
+        f.setName(in.readUTF());
+        f.setCarbohydrate(in.readInt());
+        f.setProtein(in.readInt());
+        f.setCalcium(in.readInt());
+        f.setFat(in.readInt());
+        f.setVitamin(in.readInt());
 
-        foodList.add(food);
+        foodList.add(f);
       }
       System.out.println("선수 식단 데이터 로딩!");
     } catch (Exception e) {
@@ -252,14 +256,15 @@ public class Soccer {
 
       out.writeInt(foodList.size());
 
-      for(Food food : foodList) {
-        out.writeUTF(food.getName());
-        out.writeInt(food.getCarbohydrate());
-        out.writeInt(food.getProtein());
-        out.writeInt(food.getCalcium());
-        out.writeInt(food.getFat());
-        out.writeInt(food.getVitamin());
+      for(Food f : foodList) {
+        out.writeUTF(f.getName());
+        out.writeInt(f.getCarbohydrate());
+        out.writeInt(f.getProtein());
+        out.writeInt(f.getCalcium());
+        out.writeInt(f.getFat());
+        out.writeInt(f.getVitamin());
       }
+      System.out.println("선수 식단 데이터 저장 완료!");
     }catch (Exception e) {
       System.out.println(" 선수 식단 데이터를 파일로 저장하는 중에 오류 발생!");
     }
@@ -273,13 +278,13 @@ public class Soccer {
       int size = in.readInt();
 
       for(int i = 0; i < size; i++) {
-        Amount amount = new Amount();
-        amount.setNumber(in.readInt());
-        amount.setFowardprice(in.readInt());
-        amount.setMidfielderprice(in.readInt());
-        amount.setDefenderprice(in.readInt());
+        Amount a = new Amount();
+        a.setNumber(in.readInt());
+        a.setFowardprice(in.readInt());
+        a.setMidfielderprice(in.readInt());
+        a.setDefenderprice(in.readInt());
 
-        amountList.add(amount);
+        amountList.add(a);
       }
       System.out.println("선수 이적료 데이터 로딩!");
     } catch (Exception e) {
@@ -293,12 +298,13 @@ public class Soccer {
 
       out.writeInt(amountList.size());
 
-      for(Amount amount : amountList) {
-        out.writeInt(amount.getNumber());
-        out.writeInt(amount.getFowardprice());
-        out.writeInt(amount.getMidfielderprice());
-        out.writeInt(amount.getDefenderprice());
+      for(Amount a : amountList) {
+        out.writeInt(a.getNumber());
+        out.writeInt(a.getFowardprice());
+        out.writeInt(a.getMidfielderprice());
+        out.writeInt(a.getDefenderprice());
       }
+      System.out.println("선수 이적료 데이터 저장 완료!");
     }catch (Exception e) {
       System.out.println(" 선수 이적료 데이터를 파일로 저장하는 중에 오류 발생!");
     }

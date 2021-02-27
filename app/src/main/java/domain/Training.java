@@ -10,7 +10,7 @@ public class Training implements Serializable{
   public String title;
   public String content;
   public Date startDate;
-  public Object endDate;
+  public Date endDate;
   public int status;
   public String stateLabel;
 
@@ -42,7 +42,7 @@ public class Training implements Serializable{
   public Object getEndDate() {
     return endDate;
   }
-  public void setEndDate(Object endDate) {
+  public void setEndDate(Date endDate) {
     this.endDate = endDate;
   }
   public int getStatus() {
