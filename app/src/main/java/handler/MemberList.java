@@ -1,27 +1,56 @@
 package handler;
 
-import domain.Member;
-
 public class MemberList {
 
   static final int DEFAULT_CAPACITY = 100;
   static int size = 0;
-  static Member[] members = new Member[DEFAULT_CAPACITY];
+  static MemberList[] members = new MemberList[DEFAULT_CAPACITY];
 
-  public void add(Member m) {
+  private static final long serialVersionUID = 1L;
+  public int no;
+  public String name;
+  public String nationality;
+  public String position;
+
+  public int getNo() {
+    return no;
+  }
+  public void setNo(int no) {
+    this.no = no;
+  }
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+  public String getNationality() {
+    return nationality;
+  }
+  public void setNationality(String nationality) {
+    this.nationality = nationality;
+  }
+  public String getPosition() {
+    return position;
+  }
+  public void setPosition(String position) {
+    this.position = position;
+  }
+
+  public void add(MemberList m) {
     members[size++] =  m;
   }
 
 
-  public Member[] toArray() {
-    Member[] arr = new Member[size];
+  public MemberList[] toArray() {
+    MemberList[] arr = new MemberList[size];
     for(int i = 0; i < size; i++) {
       arr[i] = members[i];
     }
     return arr;
   }
 
-  public Member get(int memberNo) {
+  public MemberList get(int memberNo) {
     int i = indexOf(memberNo);
     if(i == -1)
       return null;
@@ -50,7 +79,7 @@ public class MemberList {
 
   int indexOf(int memberNo) {
     for (int i = 0; i < this.size; i++) {
-      Member member = this.members[i];
+      MemberList member = this.members[i];
       if (member.no == memberNo) {
         return i;
       }

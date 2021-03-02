@@ -1,6 +1,5 @@
 package handler;
 
-import domain.Training;
 import util.Prompt;
 
 public class TrainingHandler {
@@ -9,7 +8,7 @@ public class TrainingHandler {
 
   public static void add() {
 
-    Training t = new Training();
+    TrainingList t = new TrainingList();
 
     System.out.println("[훈련 내용]");
 
@@ -45,9 +44,9 @@ public class TrainingHandler {
 
   public static void list() {
 
-    Training[] trainings = trainingList.toArray();
+    TrainingList[] trainings = trainingList.toArray();
 
-    for (Training t : trainings) {
+    for (TrainingList t : trainings) {
       System.out.printf(" %s, %s, %s, %s, %s, %s\n",
           t.name,t.title,t.content, t.startDate, t.endDate, t.stateLabel);
     }

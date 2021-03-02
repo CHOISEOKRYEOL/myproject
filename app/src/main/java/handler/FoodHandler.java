@@ -1,6 +1,5 @@
 package handler;
 
-import domain.Food;
 import util.Prompt;
 
 public class FoodHandler {
@@ -9,7 +8,7 @@ public class FoodHandler {
 
   public static void add() {
 
-    Food f = new Food();
+    FoodList f = new FoodList();
 
     System.out.println("[식단 관리]");
 
@@ -38,9 +37,9 @@ public class FoodHandler {
 
   public static void list() {
 
-    Food[] foods =  foodList.toArray();
+    FoodList[] foods =  foodList.toArray();
 
-    for(Food f : foods) {
+    for(FoodList f : foods) {
       System.out.printf("%s, %d, %d, %d, %d, %d\n", 
           f.name,f.carbohydrate,f.protein,f.calcium,f.fat,f.vitamin);
     }

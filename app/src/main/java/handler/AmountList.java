@@ -22,4 +22,26 @@ public class AmountList {
     return arr;
   }
 
+  private static final long serialVersionUID = 1L;
+
+  public int getFowardprice() {
+    return fowardprice;
+  }
+  public void setFowardprice(int fowardprice) {
+    this.fowardprice = fowardprice;
+  }
+  public int getMidfielderprice() {
+    return midfielderprice;
+  }
+  public void setMidfielderprice(int midfielderprice) {
+    this.midfielderprice = midfielderprice;
+  }
+  public int getDefenderprice() {
+    return defenderprice;
+  }
+  public void setDefenderprice(int defenderprice) {
+    this.defenderprice = defenderprice;
+  }
+
+
 }

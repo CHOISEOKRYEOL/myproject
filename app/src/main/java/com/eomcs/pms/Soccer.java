@@ -10,22 +10,22 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.Stack;
-import domain.Amount;
-import domain.Food;
-import domain.Member;
-import domain.Training;
 import handler.AmountHandler;
+import handler.AmountList;
 import handler.FoodHandler;
+import handler.FoodList;
 import handler.MemberHandler;
+import handler.MemberList;
 import handler.TrainingHandler;
+import handler.TrainingList;
 import util.Prompt;
 
 public class Soccer {
 
-  static LinkedList<Member> memberList = new LinkedList<>();
-  static ArrayList<Training> trainingList = new ArrayList<>();
-  static ArrayList<Food> foodList = new ArrayList<>();
-  static ArrayList<Amount> amountList = new ArrayList<>();
+  static LinkedList<MemberList> memberList = new LinkedList<>();
+  static ArrayList<TrainingList> trainingList = new ArrayList<>();
+  static ArrayList<FoodList> foodList = new ArrayList<>();
+  static ArrayList<AmountList> amountList = new ArrayList<>();
 
   static Stack commandStack  = new Stack();
 
@@ -149,7 +149,7 @@ public class Soccer {
         try {
           String record = in.nextLine();
           String[] fields = record.split(",");
-          Member m = new Member();
+          MemberList m = new MemberList();
           m.setNo(Integer.parseInt(fields[0]));
           m.setName(fields[1]);
           m.setNationality(fields[2]);
@@ -168,7 +168,7 @@ public class Soccer {
   }
   static void saveMembers() {
     try(FileWriter out = new FileWriter("members.csv")) {
-      for(Member m : memberList) {
+      for(MemberList m : memberList) {
         out.write(String.format("%d,%s,%s,%s\n",
             m.getNo(),
             m.getName(),
@@ -188,7 +188,7 @@ public class Soccer {
         try {
           String[] fields = in.nextLine().split(",");
 
-          Training t = new Training();
+          TrainingList t = new TrainingList();
           t.setName(fields[0]);
           t.setTitle(fields[1]);
           t.setContent(fields[2]);
@@ -210,7 +210,7 @@ public class Soccer {
   static void saveTrainings() {
     try(FileWriter out = new FileWriter("trainings.csv")) {
 
-      for(Training t : trainingList) {
+      for(TrainingList t : trainingList) {
         out.write(String.format("%s,%s,%s,%s%s\n",
             t.getName(),
             t.getTitle(),
@@ -231,7 +231,7 @@ public class Soccer {
         try {
           String[] fields = in.nextLine().split(",");
 
-          Food f = new Food();
+          FoodList f = new FoodList();
           f.setName(fields[0]);
           f.setCarbohydrate(Integer.parseInt(fields[0]));
           f.setProtein(Integer.parseInt(fields[0]));
@@ -252,7 +252,7 @@ public class Soccer {
   static void saveFoods() {
     try(FileWriter out = new FileWriter("projects.csv")) {
 
-      for(Food f : foodList) {
+      for(FoodList f : foodList) {
         out.write(String.format("%s,&d,%d,%d,%d,%d", 
             f.getName(),
             f.getCarbohydrate(),
@@ -276,8 +276,7 @@ public class Soccer {
         try {
           String[] fields = in.nextLine().split(",");
 
-          Amount a = new Amount();
-          a.setNumber(Integer.parseInt(fields[0]));
+          AmountList a = new AmountList();
           a.setFowardprice(Integer.parseInt(fields[0]));
           a.setMidfielderprice(Integer.parseInt(fields[0]));
           a.setDefenderprice(Integer.parseInt(fields[0]));
@@ -296,9 +295,8 @@ public class Soccer {
   static void saveAmounts() {
     try(FileWriter out = new FileWriter("tasks.csv")) {
 
-      for(Amount a : amountList) {
-        out.write(String.format("%d,%d,%d,%d\n",
-            a.getNumber(),
+      for(AmountList a : amountList) {
+        out.write(String.format("%d,%d,%d\\n",
             a.getFowardprice(),
             a.getMidfielderprice(),
             a.getDefenderprice()));

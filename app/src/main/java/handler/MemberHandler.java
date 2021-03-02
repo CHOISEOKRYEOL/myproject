@@ -1,6 +1,5 @@
 package handler;
 
-import domain.Member;
 import util.Prompt;
 
 public class MemberHandler {
@@ -11,7 +10,7 @@ public class MemberHandler {
 
     System.out.println("[선수 등록]");
 
-    Member m = new Member();
+    MemberList m = new MemberList();
 
     m.no = Prompt.inputInt("번호 ");
     m.name = Prompt.inputString("이름 ");
@@ -24,9 +23,9 @@ public class MemberHandler {
 
   public static void list() {
 
-    Member[] members = memberList.toArray();
+    MemberList[] members = memberList.toArray();
 
-    for(Member m : members) {
+    for(MemberList m : members) {
       System.out.printf("%d, %s, %s, %s\n",m.no,m.name,m.nationality,m.position);
     }
   }
@@ -36,7 +35,7 @@ public class MemberHandler {
 
     int no = Prompt.inputInt("번호");
 
-    Member member = memberList.get(no);
+    MemberList member = memberList.get(no);
     if(member == null) {
       System.out.println("해당번호의 선수가 없습니다.");
       return;
@@ -52,7 +51,7 @@ public class MemberHandler {
 
     int no = Prompt.inputInt("번호");
 
-    Member member = memberList.get(no);
+    MemberList member = memberList.get(no);
 
     if(member.no != no) {
       System.out.println("해당번호의 선수가 없습니다.");
@@ -81,7 +80,7 @@ public class MemberHandler {
 
     int no = Prompt.inputInt("선수 번호");
 
-    Member member = memberList.get(no);
+    MemberList member = memberList.get(no);
 
     if(member.no != no) {
       System.out.println("해당번호의 선수가 없습니다.");
