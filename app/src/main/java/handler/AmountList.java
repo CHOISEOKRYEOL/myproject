@@ -1,21 +1,23 @@
 package handler;
 
-import domain.Amount;
-
 public class AmountList {
 
   static final int DEFAULT_CAPACITY = 100;
   static int size = 0;
-  static Amount[] amounts = new Amount[DEFAULT_CAPACITY];
+  static AmountList[] amounts = new AmountList[DEFAULT_CAPACITY];
+  public int fowardprice;
+  public int midfielderprice;
+  public int defenderprice;
 
-  void add(Amount a) {
+
+  void add(AmountList a) {
     this.amounts[this.size++] = a;
   }
 
-  Amount[] toArray() {
-    Amount[] arr = new Amount[this.size];
-    for(int i = 0; i < this.size; i++) {
-      arr[i] = this.amounts[i];
+  AmountList[] toArray() {
+    AmountList[] arr = new AmountList[this.size];
+    for(int i = 0; i < AmountList.size; i++) {
+      arr[i] = AmountList.amounts[i];
     }
     return arr;
   }

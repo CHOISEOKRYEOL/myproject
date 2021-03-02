@@ -1,6 +1,5 @@
 package handler;
 
-import domain.Amount;
 import util.Prompt;
 
 public class AmountHandler {
@@ -15,7 +14,7 @@ public class AmountHandler {
 
   public static void add() {
 
-    Amount a = new Amount();
+    AmountList a = new AmountList();
 
     System.out.println("[포지션 별 영입 가격]");
     System.out.println();
@@ -29,13 +28,16 @@ public class AmountHandler {
   public static void list() {
 
 
-    Amount[] amounts = amountList.toArray();
+    AmountList[] amounts = amountList.toArray();
 
-    for(Amount a : amounts) {
-      System.out.printf("%d, %d, %d\n" ,a.fowardprice,a.midfielderprice,a.defenderprice);
+    for(AmountList a : amounts) {
+      System.out.printf("%d, %d, %d\n" ,
+          a.fowardprice,
+          a.midfielderprice,
+          a.defenderprice);
     }
 
-    for(Amount a :amounts) {
+    for(AmountList a :amounts) {
       fowardSum += a.fowardprice;
       midfielderSum += a.midfielderprice;
       defenderSum += a.defenderprice;

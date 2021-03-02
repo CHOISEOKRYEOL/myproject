@@ -1,16 +1,13 @@
 package com.eomcs.pms;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.Stack;
 import domain.Amount;
@@ -44,7 +41,6 @@ public class Soccer {
     loadFoods();
     loadAmounts();
 
-
     while(true) {
       System.out.println("아이디와 비밀번호를 입력하세요");
       System.out.print("아이디: ");
@@ -64,6 +60,7 @@ public class Soccer {
         System.out.println("입력하신 아이디가 존재하지 않습니다.");
       }
     }
+
 
     loop:
       while (true) {
@@ -147,38 +144,36 @@ public class Soccer {
     }
   }
   static void loadMembers() {
-    try (DataInputStream in = new DataInputStream(
-        new BufferedInputStream(
-            new FileInputStream("members.data")))) {
+    try (Scanner in = new Scanner(new FileReader("members.csv"))) {
+      while(true) {
+        try {
+          String record = in.nextLine();
+          String[] fields = record.split(",");
+          Member m = new Member();
+          m.setNo(Integer.parseInt(fields[0]));
+          m.setName(fields[1]);
+          m.setNationality(fields[2]);
+          m.setPosition(fields[3]);
 
-      int size = in.readInt();
-
-      for(int i = 0; i < size; i++) {
-        Member m = new Member();
-        m.setNo(in.readInt());
-        m.setName(in.readUTF());
-        m.setNationality(in.readUTF());
-        m.setPosition(in.readUTF());
-
-        memberList.add(m);
+          memberList.add(m);
+        } catch(NoSuchElementException e) {
+          break;
+        }
       }
+
       System.out.println("선수 데이터 로딩!");
     } catch (Exception e) {
       System.out.println("선수 데이터 로딩 중 오류 발생!");
     }
   }
   static void saveMembers() {
-    try(DataOutputStream out = new DataOutputStream(
-        new BufferedOutputStream(
-            new FileOutputStream("members.data")))) {
-
-      out.writeInt(memberList.size());
-
+    try(FileWriter out = new FileWriter("members.csv")) {
       for(Member m : memberList) {
-        out.writeInt(m.getNo());
-        out.writeUTF(m.getName());
-        out.writeUTF(m.getNationality());
-        out.writeUTF(m.getPosition());
+        out.write(String.format("%d,%s,%s,%s\n",
+            m.getNo(),
+            m.getName(),
+            m.getNationality(),
+            m.getPosition()));
       }
       System.out.println("선수 데이터 저장 완료!");
     }catch (Exception e) {
@@ -186,63 +181,68 @@ public class Soccer {
     }
   }
   static void loadTrainings() {
-    try (DataInputStream in = new DataInputStream(
-        new BufferedInputStream(
-            new FileInputStream("trainings.data")))) {
+    try (Scanner in = new Scanner(
+        new FileReader("trainings.csv"))) {
 
-      int size = in.readInt();
+      while(true) {
+        try {
+          String[] fields = in.nextLine().split(",");
 
-      for(int i = 0; i < size; i++) {
-        Training t = new Training();
-        t.setName(in.readUTF());
-        t.setTitle(in.readUTF());
-        t.setContent(in.readUTF());
-        t.setStartDate(Date.valueOf(in.readUTF()));
-        t.setEndDate(Date.valueOf(in.readUTF()));
+          Training t = new Training();
+          t.setName(fields[0]);
+          t.setTitle(fields[1]);
+          t.setContent(fields[2]);
+          t.setStartDate(Date.valueOf(fields[3]));
+          t.setEndDate(Date.valueOf(fields[4]));
 
-        trainingList.add(t);
+          trainingList.add(t);
+
+        } catch (Exception e) {
+          break;
+        }
       }
-      System.out.println("선수 훈련 데이터 로딩!");
-    } catch (Exception e) {
-      System.out.println("선수 훈련 데이터 로딩 중 오류 발생!");
+      System.out.println("선수 데이터 로딩!");
+    }catch (Exception e) {
+      System.out.println("선수 데이터 로딩 중 오류 발생!");
     }
   }
-  static void saveTrainings() {
-    try(DataOutputStream out = new DataOutputStream(
-        new BufferedOutputStream(
-            new FileOutputStream("trainings.data")))) {
 
-      out.writeInt(trainingList.size());
+  static void saveTrainings() {
+    try(FileWriter out = new FileWriter("trainings.csv")) {
 
       for(Training t : trainingList) {
-        out.writeUTF(t.getName());
-        out.writeUTF(t.getTitle());
-        out.writeUTF(t.getContent());
-        out.writeUTF(t.getStartDate().toString());
-        out.writeUTF(t.getEndDate().toString());
+        out.write(String.format("%s,%s,%s,%s%s\n",
+            t.getName(),
+            t.getTitle(),
+            t.getContent(),
+            t.getStartDate().toString(),
+            t.getEndDate().toString()));
       }
       System.out.println("선수 훈련 데이터 저장 완료!");
     }catch (Exception e) {
-      System.out.println(" 선수 훈련 데이터를 파일로 저장하는 중에 오류 발생!");
+      System.out.println("선수 훈련 데이터를 파일로 저장하는 중에 오류 발생!");
     }
   }
   static void loadFoods() {
-    try (DataInputStream in = new DataInputStream(
-        new BufferedInputStream(
-            new FileInputStream("foods.data")))) {
+    try (Scanner in = new Scanner(new FileReader("projects.csv"))) {
 
-      int size = in.readInt();
 
-      for(int i = 0; i < size; i++) {
-        Food f = new Food();
-        f.setName(in.readUTF());
-        f.setCarbohydrate(in.readInt());
-        f.setProtein(in.readInt());
-        f.setCalcium(in.readInt());
-        f.setFat(in.readInt());
-        f.setVitamin(in.readInt());
+      while(true) {
+        try {
+          String[] fields = in.nextLine().split(",");
 
-        foodList.add(f);
+          Food f = new Food();
+          f.setName(fields[0]);
+          f.setCarbohydrate(Integer.parseInt(fields[0]));
+          f.setProtein(Integer.parseInt(fields[0]));
+          f.setCalcium(Integer.parseInt(fields[0]));
+          f.setFat(Integer.parseInt(fields[0]));
+          f.setVitamin(Integer.parseInt(fields[0]));
+
+          foodList.add(f);
+        }catch (NoSuchElementException e) {
+          break;
+        }
       }
       System.out.println("선수 식단 데이터 로딩!");
     } catch (Exception e) {
@@ -250,19 +250,17 @@ public class Soccer {
     }
   }
   static void saveFoods() {
-    try(DataOutputStream out = new DataOutputStream(
-        new BufferedOutputStream(
-            new FileOutputStream("foods.data")))) {
-
-      out.writeInt(foodList.size());
+    try(FileWriter out = new FileWriter("projects.csv")) {
 
       for(Food f : foodList) {
-        out.writeUTF(f.getName());
-        out.writeInt(f.getCarbohydrate());
-        out.writeInt(f.getProtein());
-        out.writeInt(f.getCalcium());
-        out.writeInt(f.getFat());
-        out.writeInt(f.getVitamin());
+        out.write(String.format("%s,&d,%d,%d,%d,%d", 
+            f.getName(),
+            f.getCarbohydrate(),
+            f.getProtein(),
+            f.getCalcium(),
+            f.getFat(),
+            f.getVitamin()));
+
       }
       System.out.println("선수 식단 데이터 저장 완료!");
     }catch (Exception e) {
@@ -271,20 +269,24 @@ public class Soccer {
   }
 
   static void loadAmounts() {
-    try (DataInputStream in = new DataInputStream(
-        new BufferedInputStream(
-            new FileInputStream("amounts.data")))) {
+    try (Scanner in = new Scanner(
+        new FileReader("amounts.csv"))) {
 
-      int size = in.readInt();
+      while(true) {
+        try {
+          String[] fields = in.nextLine().split(",");
 
-      for(int i = 0; i < size; i++) {
-        Amount a = new Amount();
-        a.setNumber(in.readInt());
-        a.setFowardprice(in.readInt());
-        a.setMidfielderprice(in.readInt());
-        a.setDefenderprice(in.readInt());
+          Amount a = new Amount();
+          a.setNumber(Integer.parseInt(fields[0]));
+          a.setFowardprice(Integer.parseInt(fields[0]));
+          a.setMidfielderprice(Integer.parseInt(fields[0]));
+          a.setDefenderprice(Integer.parseInt(fields[0]));
 
-        amountList.add(a);
+          amountList.add(a);
+        } catch (NoSuchElementException e) {
+          break;
+        }
+
       }
       System.out.println("선수 이적료 데이터 로딩!");
     } catch (Exception e) {
@@ -292,17 +294,14 @@ public class Soccer {
     }
   }
   static void saveAmounts() {
-    try(DataOutputStream out = new DataOutputStream(
-        new BufferedOutputStream(
-            new FileOutputStream("amounts.data")))) {
-
-      out.writeInt(amountList.size());
+    try(FileWriter out = new FileWriter("tasks.csv")) {
 
       for(Amount a : amountList) {
-        out.writeInt(a.getNumber());
-        out.writeInt(a.getFowardprice());
-        out.writeInt(a.getMidfielderprice());
-        out.writeInt(a.getDefenderprice());
+        out.write(String.format("%d,%d,%d,%d\n",
+            a.getNumber(),
+            a.getFowardprice(),
+            a.getMidfielderprice(),
+            a.getDefenderprice()));
       }
       System.out.println("선수 이적료 데이터 저장 완료!");
     }catch (Exception e) {

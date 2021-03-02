@@ -33,12 +33,12 @@ public class FoodHandler {
     f.setFat(Prompt.inputInt("지방> "));
     f.setVitamin(Prompt.inputInt("비타민> ")) ;
 
-    foodList.add(f);
+    FoodList.add(f);
   }
 
   public static void list() {
 
-    Food[] foods = foodList.toArray();
+    Food[] foods =  foodList.toArray();
 
     for(Food f : foods) {
       System.out.printf("%s, %d, %d, %d, %d, %d\n", 
