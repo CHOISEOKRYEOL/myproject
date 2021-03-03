@@ -6,32 +6,57 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.Stack;
-import handler.AmountHandler;
-import handler.AmountList;
-import handler.FoodHandler;
-import handler.FoodList;
-import handler.MemberHandler;
-import handler.MemberList;
-import handler.TrainingHandler;
-import handler.TrainingList;
-import util.Prompt;
+import com.eomcs.ApplicationContextListener;
+import com.eomcs.pms.domain.Amount;
+import com.eomcs.pms.domain.Food;
+import com.eomcs.pms.domain.Member;
+import com.eomcs.pms.domain.Training;
+import com.eomcs.pms.handler.AmountHandler;
+import com.eomcs.pms.handler.FoodHandler;
+import com.eomcs.pms.handler.MemberHandler;
+import com.eomcs.pms.handler.TrainingHandler;
+import com.eomcs.pms.listener.AppListener;
+import com.eomcs.util.Prompt;
 
 public class Soccer {
 
-  static LinkedList<MemberList> memberList = new LinkedList<>();
-  static ArrayList<TrainingList> trainingList = new ArrayList<>();
-  static ArrayList<FoodList> foodList = new ArrayList<>();
-  static ArrayList<AmountList> amountList = new ArrayList<>();
+  List<ApplicationContextListener> listeners = new ArrayList<>();
 
-  static Stack commandStack  = new Stack();
+  LinkedList<Member> memberList = new LinkedList<>();
+  ArrayList<Training> trainingList = new ArrayList<>();
+  ArrayList<Food> foodList = new ArrayList<>();
+  ArrayList<Amount> amountList = new ArrayList<>();
 
-  static Scanner scanner = new Scanner(System.in);
+  Stack<String> commandStack  = new Stack<String>();
 
-  public static void main(String[] args) throws CloneNotSupportedException {
+  Scanner scanner = new Scanner(System.in);
+
+  public static void main(String[] args) {
+    Soccer soccer = new Soccer();
+
+    soccer.addApplicationContextListener(new AppListener());
+
+    soccer.service();
+  }
+
+
+  public void addApplicationContextListener(ApplicationContextListener listener) {
+    listeners.add(listener);
+  }
+
+  public void removeApplicationContextListener(ApplicationContextListener listener) {
+    listeners.remove(listener);
+  }
+
+
+  public void service() {
+
+    notifyOnServiceStarted();
 
     Map<String, String> map = new Hashtable<String,String>();
     map.put("soccer", "1111");
@@ -60,7 +85,6 @@ public class Soccer {
         System.out.println("입력하신 아이디가 존재하지 않습니다.");
       }
     }
-
 
     loop:
       while (true) {
@@ -126,11 +150,14 @@ public class Soccer {
     saveFoods();
     saveAmounts();
 
+    notifyOnServiceStopped();
+
     Prompt.close();
   }
 
-  static void printCommandHistory() throws CloneNotSupportedException {
-    Stack stack = (Stack) commandStack.clone();
+  void printCommandHistory() throws CloneNotSupportedException {
+    @SuppressWarnings("unchecked")
+    Stack<String> stack = (Stack<String>) commandStack.clone();
 
     int count = 0;
     while(stack.size() > 0) {
@@ -143,13 +170,14 @@ public class Soccer {
       }
     }
   }
-  static void loadMembers() {
+  void loadMembers() {
     try (Scanner in = new Scanner(new FileReader("members.csv"))) {
+
       while(true) {
         try {
           String record = in.nextLine();
           String[] fields = record.split(",");
-          MemberList m = new MemberList();
+          Member m = new Member();
           m.setNo(Integer.parseInt(fields[0]));
           m.setName(fields[1]);
           m.setNationality(fields[2]);
@@ -166,21 +194,21 @@ public class Soccer {
       System.out.println("선수 데이터 로딩 중 오류 발생!");
     }
   }
-  static void saveMembers() {
+  void saveMembers() {
     try(FileWriter out = new FileWriter("members.csv")) {
-      for(MemberList m : memberList) {
+      for(Member member : memberList) {
         out.write(String.format("%d,%s,%s,%s\n",
-            m.getNo(),
-            m.getName(),
-            m.getNationality(),
-            m.getPosition()));
+            member.getNo(),
+            member.getName(),
+            member.getNationality(),
+            member.getPosition()));
       }
       System.out.println("선수 데이터 저장 완료!");
     }catch (Exception e) {
       System.out.println(" 선수 데이터를 파일로 저장하는 중에 오류 발생!");
     }
   }
-  static void loadTrainings() {
+  void loadTrainings() {
     try (Scanner in = new Scanner(
         new FileReader("trainings.csv"))) {
 
@@ -188,7 +216,7 @@ public class Soccer {
         try {
           String[] fields = in.nextLine().split(",");
 
-          TrainingList t = new TrainingList();
+          Training t = new Training();
           t.setName(fields[0]);
           t.setTitle(fields[1]);
           t.setContent(fields[2]);
@@ -207,10 +235,10 @@ public class Soccer {
     }
   }
 
-  static void saveTrainings() {
+  void saveTrainings() {
     try(FileWriter out = new FileWriter("trainings.csv")) {
 
-      for(TrainingList t : trainingList) {
+      for(Training t : trainingList) {
         out.write(String.format("%s,%s,%s,%s%s\n",
             t.getName(),
             t.getTitle(),
@@ -223,21 +251,20 @@ public class Soccer {
       System.out.println("선수 훈련 데이터를 파일로 저장하는 중에 오류 발생!");
     }
   }
-  static void loadFoods() {
+  void loadFoods() {
     try (Scanner in = new Scanner(new FileReader("projects.csv"))) {
-
 
       while(true) {
         try {
           String[] fields = in.nextLine().split(",");
 
-          FoodList f = new FoodList();
+          Food f = new Food();
           f.setName(fields[0]);
-          f.setCarbohydrate(Integer.parseInt(fields[0]));
-          f.setProtein(Integer.parseInt(fields[0]));
-          f.setCalcium(Integer.parseInt(fields[0]));
-          f.setFat(Integer.parseInt(fields[0]));
-          f.setVitamin(Integer.parseInt(fields[0]));
+          f.setCarbohydrate(Integer.parseInt(fields[1]));
+          f.setProtein(Integer.parseInt(fields[2]));
+          f.setCalcium(Integer.parseInt(fields[3]));
+          f.setFat(Integer.parseInt(fields[4]));
+          f.setVitamin(Integer.parseInt(fields[5]));
 
           foodList.add(f);
         }catch (NoSuchElementException e) {
@@ -249,10 +276,10 @@ public class Soccer {
       System.out.println("선수 식단 데이터 로딩 중 오류 발생!");
     }
   }
-  static void saveFoods() {
+  void saveFoods() {
     try(FileWriter out = new FileWriter("projects.csv")) {
 
-      for(FoodList f : foodList) {
+      for(Food f : foodList) {
         out.write(String.format("%s,&d,%d,%d,%d,%d", 
             f.getName(),
             f.getCarbohydrate(),
@@ -268,7 +295,7 @@ public class Soccer {
     }
   }
 
-  static void loadAmounts() {
+  void loadAmounts() {
     try (Scanner in = new Scanner(
         new FileReader("amounts.csv"))) {
 
@@ -276,10 +303,10 @@ public class Soccer {
         try {
           String[] fields = in.nextLine().split(",");
 
-          AmountList a = new AmountList();
+          Amount a = new Amount();
           a.setFowardprice(Integer.parseInt(fields[0]));
-          a.setMidfielderprice(Integer.parseInt(fields[0]));
-          a.setDefenderprice(Integer.parseInt(fields[0]));
+          a.setMidfielderprice(Integer.parseInt(fields[1]));
+          a.setDefenderprice(Integer.parseInt(fields[2]));
 
           amountList.add(a);
         } catch (NoSuchElementException e) {
@@ -292,11 +319,11 @@ public class Soccer {
       System.out.println("선수 이적료 데이터 로딩 중 오류 발생!");
     }
   }
-  static void saveAmounts() {
+  void saveAmounts() {
     try(FileWriter out = new FileWriter("tasks.csv")) {
 
-      for(AmountList a : amountList) {
-        out.write(String.format("%d,%d,%d\\n",
+      for(Amount a : amountList) {
+        out.write(String.format("%d,%d,%d,%d\n",
             a.getFowardprice(),
             a.getMidfielderprice(),
             a.getDefenderprice()));
@@ -304,6 +331,17 @@ public class Soccer {
       System.out.println("선수 이적료 데이터 저장 완료!");
     }catch (Exception e) {
       System.out.println(" 선수 이적료 데이터를 파일로 저장하는 중에 오류 발생!");
+    }
+  }
+
+  private void notifyOnServiceStarted() {
+    for(ApplicationContextListener listener : listeners) {
+      listener.contextInitialized();
+    }
+  }
+  private void notifyOnServiceStopped() {
+    for(ApplicationContextListener listener : listeners) {
+      listener.contextDestroyed();
     }
   }
 }

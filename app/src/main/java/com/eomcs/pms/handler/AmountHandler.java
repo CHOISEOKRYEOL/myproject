@@ -1,6 +1,6 @@
-package handler;
+package com.eomcs.pms.handler;
 
-import util.Prompt;
+import com.eomcs.util.Prompt;
 
 public class AmountHandler {
 
@@ -65,5 +65,4 @@ public class AmountHandler {
     defenderSum = 0;
     total = 0;
   }
-
 }

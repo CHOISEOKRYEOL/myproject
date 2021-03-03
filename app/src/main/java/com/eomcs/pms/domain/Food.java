@@ -1,34 +1,17 @@
-package handler;
+package com.eomcs.pms.domain;
 
-public class FoodList {
+import java.io.Serializable;
 
-  static final int DEFAULT_CAPACITY = 100;
-  static int size = 0;
-  static FoodList[] foods = new FoodList[DEFAULT_CAPACITY];
-  public String name;
+public class Food implements Serializable{
+
   private static final long serialVersionUID = 1L;
+  public String name;
   public int carbohydrate;
   public int protein;
   public int calcium;
   public int fat;
   public int vitamin;
 
-
-
-
-  static void add(FoodList f) {
-    foods[size++] = f;
-  }
-
-
-
-  FoodList[] toArray() {
-    FoodList[] arr = new FoodList[this.size];
-    for(int i = 0; i < this.size; i++) {
-      arr[i] = this.foods[i];
-    }
-    return arr;
-  }
 
   public String getName() {
     return name;
@@ -95,4 +78,3 @@ public class FoodList {
 
 
 }
-

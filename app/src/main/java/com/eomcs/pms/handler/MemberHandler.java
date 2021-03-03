@@ -1,6 +1,7 @@
-package handler;
+package com.eomcs.pms.handler;
 
-import util.Prompt;
+import com.eomcs.pms.domain.Member;
+import com.eomcs.util.Prompt;
 
 public class MemberHandler {
 
@@ -10,7 +11,7 @@ public class MemberHandler {
 
     System.out.println("[선수 등록]");
 
-    MemberList m = new MemberList();
+    Member m = new Member();
 
     m.no = Prompt.inputInt("번호 ");
     m.name = Prompt.inputString("이름 ");
@@ -23,9 +24,9 @@ public class MemberHandler {
 
   public static void list() {
 
-    MemberList[] members = memberList.toArray();
+    Member[] members = memberList.toArray();
 
-    for(MemberList m : members) {
+    for(Member m : members) {
       System.out.printf("%d, %s, %s, %s\n",m.no,m.name,m.nationality,m.position);
     }
   }
@@ -35,7 +36,7 @@ public class MemberHandler {
 
     int no = Prompt.inputInt("번호");
 
-    MemberList member = memberList.get(no);
+    Member member = memberList.get(no);
     if(member == null) {
       System.out.println("해당번호의 선수가 없습니다.");
       return;
@@ -51,7 +52,7 @@ public class MemberHandler {
 
     int no = Prompt.inputInt("번호");
 
-    MemberList member = memberList.get(no);
+    Member member = memberList.get(no);
 
     if(member.no != no) {
       System.out.println("해당번호의 선수가 없습니다.");
@@ -80,7 +81,7 @@ public class MemberHandler {
 
     int no = Prompt.inputInt("선수 번호");
 
-    MemberList member = memberList.get(no);
+    Member member = memberList.get(no);
 
     if(member.no != no) {
       System.out.println("해당번호의 선수가 없습니다.");
@@ -98,7 +99,6 @@ public class MemberHandler {
       }
     }
   }
-
 
 }
 

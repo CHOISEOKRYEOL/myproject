@@ -1,4 +1,4 @@
-package util;
+package com.eomcs.util;
 
 
 import java.sql.Date;

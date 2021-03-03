@@ -1,6 +1,7 @@
-package handler;
+package com.eomcs.pms.handler;
 
-import util.Prompt;
+import com.eomcs.pms.domain.Food;
+import com.eomcs.util.Prompt;
 
 public class FoodHandler {
 
@@ -8,7 +9,7 @@ public class FoodHandler {
 
   public static void add() {
 
-    FoodList f = new FoodList();
+    Food f = new Food();
 
     System.out.println("[식단 관리]");
 
@@ -37,9 +38,9 @@ public class FoodHandler {
 
   public static void list() {
 
-    FoodList[] foods =  foodList.toArray();
+    Food[] foods =  foodList.toArray();
 
-    for(FoodList f : foods) {
+    for(Food f : foods) {
       System.out.printf("%s, %d, %d, %d, %d, %d\n", 
           f.name,f.carbohydrate,f.protein,f.calcium,f.fat,f.vitamin);
     }

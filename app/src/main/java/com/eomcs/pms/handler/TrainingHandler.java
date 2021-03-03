@@ -1,6 +1,7 @@
-package handler;
+package com.eomcs.pms.handler;
 
-import util.Prompt;
+import com.eomcs.pms.domain.Training;
+import com.eomcs.util.Prompt;
 
 public class TrainingHandler {
 
@@ -8,7 +9,7 @@ public class TrainingHandler {
 
   public static void add() {
 
-    TrainingList t = new TrainingList();
+    Training t = new Training();
 
     System.out.println("[훈련 내용]");
 
@@ -44,9 +45,9 @@ public class TrainingHandler {
 
   public static void list() {
 
-    TrainingList[] trainings = trainingList.toArray();
+    Training[] trainings = trainingList.toArray();
 
-    for (TrainingList t : trainings) {
+    for (Training t : trainings) {
       System.out.printf(" %s, %s, %s, %s, %s, %s\n",
           t.name,t.title,t.content, t.startDate, t.endDate, t.stateLabel);
     }
