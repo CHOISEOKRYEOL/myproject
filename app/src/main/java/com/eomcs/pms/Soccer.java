@@ -3,6 +3,7 @@ package com.eomcs.pms;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.sql.Date;
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.LinkedList;
@@ -27,16 +28,20 @@ public class Soccer {
 
   List<ApplicationContextListener> listeners = new ArrayList<>();
 
-  LinkedList<Member> memberList = new LinkedList<>();
-  ArrayList<Training> trainingList = new ArrayList<>();
-  ArrayList<Food> foodList = new ArrayList<>();
-  ArrayList<Amount> amountList = new ArrayList<>();
+  static ArrayDeque<String> commandStack1 = new ArrayDeque<>();
+  static LinkedList<String> commandQueue = new LinkedList<>();
+
+  public static LinkedList<Member> memberList = new LinkedList<>();
+  public static ArrayList<Training> trainingList = new ArrayList<>();
+  public static ArrayList<Food>foodList = new ArrayList<>();
+  public static ArrayList <Amount>amountList = new ArrayList<>();
 
   Stack<String> commandStack  = new Stack<String>();
 
   Scanner scanner = new Scanner(System.in);
 
   public static void main(String[] args) {
+
     Soccer soccer = new Soccer();
 
     soccer.addApplicationContextListener(new AppListener());
@@ -52,7 +57,6 @@ public class Soccer {
   public void removeApplicationContextListener(ApplicationContextListener listener) {
     listeners.remove(listener);
   }
-
 
   public void service() {
 
