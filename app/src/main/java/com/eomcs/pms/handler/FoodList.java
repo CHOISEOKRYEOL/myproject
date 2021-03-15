@@ -8,8 +8,6 @@ public class FoodList {
   static int size = 0;
   static Food[] foods = new Food[DEFAULT_CAPACITY];
 
-
-
   static void add(Food f) {
     foods[size++] = f;
   }

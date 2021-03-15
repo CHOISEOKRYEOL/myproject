@@ -5,6 +5,7 @@ import java.io.FileWriter;
 import java.sql.Date;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
@@ -17,10 +18,18 @@ import com.eomcs.pms.domain.Amount;
 import com.eomcs.pms.domain.Food;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.pms.domain.Training;
-import com.eomcs.pms.handler.AmountHandler;
-import com.eomcs.pms.handler.FoodHandler;
-import com.eomcs.pms.handler.MemberHandler;
-import com.eomcs.pms.handler.TrainingHandler;
+import com.eomcs.pms.handler.AmountAddHandler;
+import com.eomcs.pms.handler.AmountListHandler;
+import com.eomcs.pms.handler.Command;
+import com.eomcs.pms.handler.FoodAddHandler;
+import com.eomcs.pms.handler.FoodListHandler;
+import com.eomcs.pms.handler.MemberAddHandler;
+import com.eomcs.pms.handler.MemberDeleteHandler;
+import com.eomcs.pms.handler.MemberDetailHandler;
+import com.eomcs.pms.handler.MemberListHandler;
+import com.eomcs.pms.handler.MemberUpdateHandler;
+import com.eomcs.pms.handler.TrainingAddHandler;
+import com.eomcs.pms.handler.TrainingListHandler;
 import com.eomcs.pms.listener.AppListener;
 import com.eomcs.util.Prompt;
 
@@ -28,7 +37,7 @@ public class Soccer {
 
   List<ApplicationContextListener> listeners = new ArrayList<>();
 
-  static ArrayDeque<String> commandStack1 = new ArrayDeque<>();
+  static ArrayDeque<String> commandStack = new ArrayDeque<>();
   static LinkedList<String> commandQueue = new LinkedList<>();
 
   public static LinkedList<Member> memberList = new LinkedList<>();
@@ -36,11 +45,15 @@ public class Soccer {
   public static ArrayList<Food>foodList = new ArrayList<>();
   public static ArrayList <Amount>amountList = new ArrayList<>();
 
-  Stack<String> commandStack  = new Stack<String>();
+  Stack<String> commandStack1  = new Stack<String>();
 
   Scanner scanner = new Scanner(System.in);
 
+  private List<ApplicationContextListener> commandMap;
+
+
   public static void main(String[] args) {
+
 
     Soccer soccer = new Soccer();
 
@@ -70,6 +83,24 @@ public class Soccer {
     loadFoods();
     loadAmounts();
 
+    HashMap<String,Command> commandMap = new HashMap<>();
+
+    commandMap.put("/member/add", new MemberAddHandler(memberList));
+    commandMap.put("/member/list", new MemberListHandler(memberList));
+    commandMap.put("/member/detail", new MemberDetailHandler(memberList));
+    commandMap.put("/member/update", new MemberUpdateHandler(memberList));
+    commandMap.put("/member/delete", new MemberDeleteHandler(memberList));
+
+    commandMap.put("/training/add", new TrainingAddHandler(trainingList));
+    commandMap.put("/training/list", new TrainingListHandler(trainingList));
+
+    commandMap.put("/food/add", new FoodAddHandler(foodList));
+    commandMap.put("/food/list", new FoodListHandler(foodList));
+
+    commandMap.put("/amount/add", new AmountAddHandler(amountList));
+    commandMap.put("/amount/list", new AmountListHandler(amountList));
+
+
     while(true) {
       System.out.println("아이디와 비밀번호를 입력하세요");
       System.out.print("아이디: ");
@@ -92,46 +123,14 @@ public class Soccer {
 
     loop:
       while (true) {
-        System.out.println("명령>");
-        String command = scanner.nextLine();
+        String command = com.eomcs.util.Prompt.inputString("명령>");
 
         commandStack.push(command);
+        commandQueue.offer(command);
 
         try {
           switch (command) {
-            case "/member/add":
-              MemberHandler.add();
-              break;
-            case "/member/list":
-              MemberHandler.list();
-              break;
-            case "/member/detail":
-              MemberHandler.detail();
-              break;
-            case "/member/update":
-              MemberHandler.update();
-              break;
-            case "/member/delete":
-              MemberHandler.delete();
-              break;
-            case "/training/add":
-              TrainingHandler.add();
-              break;
-            case "/training/list":
-              TrainingHandler.list();
-              break;
-            case "/food/add":
-              FoodHandler.add();
-              break;
-            case "/food/list":
-              FoodHandler.list();
-              break;
-            case "/amount/add":
-              AmountHandler.add();
-              break;
-            case "/amount/list":
-              AmountHandler.list();
-              break;
+
             case "history" :
               printCommandHistory();
               break;
@@ -139,7 +138,13 @@ public class Soccer {
               System.out.println("안녕!");
               break loop;
             default:
-              System.out.println("실행할 수 없는 명령입니다.");
+              Command commandHandler = commandMap.get(command);
+
+              if(commandHandler == null) {
+                System.out.println("실행할 수 없는 명령입니다.");
+              }else {
+                commandHandler.service();
+              }
           }
         } catch(Exception e) {
           System.out.println("--------------------------------------------");
@@ -161,7 +166,7 @@ public class Soccer {
 
   void printCommandHistory() throws CloneNotSupportedException {
     @SuppressWarnings("unchecked")
-    Stack<String> stack = (Stack<String>) commandStack.clone();
+    Stack<String> stack = (Stack<String>) commandStack1.clone();
 
     int count = 0;
     while(stack.size() > 0) {
