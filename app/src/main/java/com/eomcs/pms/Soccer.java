@@ -245,7 +245,7 @@ public class Soccer {
     try(FileWriter out = new FileWriter("trainings.csv")) {
 
       for(Training t : trainingList) {
-        out.write(String.format("%s,%s,%s,%s%s\n",
+        out.write(String.format("%s,%s,%s,%s,%s\n",
             t.getName(),
             t.getTitle(),
             t.getContent(),
@@ -258,7 +258,7 @@ public class Soccer {
     }
   }
   void loadFoods() {
-    try (Scanner in = new Scanner(new FileReader("projects.csv"))) {
+    try (Scanner in = new Scanner(new FileReader("foods.csv"))) {
 
       while(true) {
         try {
@@ -283,7 +283,7 @@ public class Soccer {
     }
   }
   void saveFoods() {
-    try(FileWriter out = new FileWriter("projects.csv")) {
+    try(FileWriter out = new FileWriter("foods.csv")) {
 
       for(Food f : foodList) {
         out.write(String.format("%s,&d,%d,%d,%d,%d", 
@@ -326,7 +326,7 @@ public class Soccer {
     }
   }
   void saveAmounts() {
-    try(FileWriter out = new FileWriter("tasks.csv")) {
+    try(FileWriter out = new FileWriter("amounts.csv")) {
 
       for(Amount a : amountList) {
         out.write(String.format("%d,%d,%d,%d\n",

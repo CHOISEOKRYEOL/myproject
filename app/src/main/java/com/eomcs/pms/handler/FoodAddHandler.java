@@ -17,27 +17,15 @@ public class FoodAddHandler  extends AbstractFoodHandler {
 
     System.out.println("[식단 관리]");
 
-    while (true) {
-      String name = Prompt.inputString("선수 이름 ");
-      for (int i = 0; i < MemberList.size; i++) {
-        if (isMember(name)) {
-          f.name = name;
-          break;
-        }
-      }
-      if (f.name!= null) {
-        break;
-      }
-      System.out.println("등록된 선수가 아닙니다.");
-    }
 
+    f.setName( Prompt.inputString("선수 이름 "));
     f.setCarbohydrate( Prompt.inputInt("탄수화물> "));
     f.setProtein(Prompt.inputInt("단백질> "));
     f.setCalcium(Prompt.inputInt("칼슘> "));
     f.setFat(Prompt.inputInt("지방> "));
     f.setVitamin(Prompt.inputInt("비타민> ")) ;
 
-    FoodList.add(f);
+    foodList.add(f);
 
   }
 

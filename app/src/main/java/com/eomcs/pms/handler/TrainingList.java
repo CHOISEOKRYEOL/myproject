@@ -19,5 +19,4 @@ public class TrainingList {
     }
     return arr;
   }
-
 }

@@ -17,11 +17,11 @@ public class TrainingAddHandler extends AbstractTrainingHandler {
 
     System.out.println("[훈련 내용]");
 
-    String name = Prompt.inputString("이름 ");
-    t.title = Prompt.inputString("제목 ");
-    t.content = Prompt.inputString("내용 ");
-    t.startDate = Prompt.inputDate("시작일 ");
-    t.endDate = Prompt.inputDate("종료일 ");
+    t.name = Prompt.inputString("이름: ");
+    t.title = Prompt.inputString("제목: ");
+    t.content = Prompt.inputString("내용: ");
+    t.startDate = Prompt.inputDate("시작일: ");
+    t.endDate = Prompt.inputDate("종료일: ");
     t.status = Prompt.inputInt(" 진행중: 1\n 완료: 2\n");
     String stateLabel = null;
     switch(t.status) {
@@ -32,8 +32,6 @@ public class TrainingAddHandler extends AbstractTrainingHandler {
         t.stateLabel = "완료";
         break;
     }
-    TrainingList.add(t);
+    trainingList.add(t);
   }
-
-
 }

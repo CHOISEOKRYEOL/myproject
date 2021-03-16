@@ -20,5 +20,4 @@ public class TrainingListHandler extends AbstractTrainingHandler {
           t.name,t.title,t.content, t.startDate, t.endDate, t.stateLabel);
     }
   }
-
 }
