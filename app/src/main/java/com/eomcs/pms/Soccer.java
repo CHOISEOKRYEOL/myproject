@@ -54,14 +54,12 @@ public class Soccer {
 
   public static void main(String[] args) {
 
-
     Soccer soccer = new Soccer();
 
     soccer.addApplicationContextListener(new AppListener());
 
     soccer.service();
   }
-
 
   public void addApplicationContextListener(ApplicationContextListener listener) {
     listeners.add(listener);
@@ -99,7 +97,6 @@ public class Soccer {
 
     commandMap.put("/amount/add", new AmountAddHandler(amountList));
     commandMap.put("/amount/list", new AmountListHandler(amountList));
-
 
     while(true) {
       System.out.println("아이디와 비밀번호를 입력하세요");
