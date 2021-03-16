@@ -51,7 +51,6 @@ public class Soccer {
 
   private List<ApplicationContextListener> commandMap;
 
-
   public static void main(String[] args) {
 
     Soccer soccer = new Soccer();
@@ -176,6 +175,7 @@ public class Soccer {
       }
     }
   }
+
   void loadMembers() {
     try (Scanner in = new Scanner(new FileReader("members.csv"))) {
 

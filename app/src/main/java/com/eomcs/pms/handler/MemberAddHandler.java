@@ -23,4 +23,14 @@ public class MemberAddHandler extends AbstractMemberHandler {
     memberList.add(m);
 
   }
+
+  public Member findByName(String name) {
+    Member[] list = memberList.toArray(new Member[memberList.size()]);
+    for(Member m : list) {
+      if (m.getName().equals(name)) {
+        return m;
+      }
+    }
+    return null;
+  }
 }

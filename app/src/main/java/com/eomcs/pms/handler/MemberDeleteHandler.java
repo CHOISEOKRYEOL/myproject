@@ -32,6 +32,5 @@ public class MemberDeleteHandler extends AbstractMemberHandler {
         System.out.println("선수 정보 삭제를 취소하였습니다.");
       }
     }
-
   }
 }

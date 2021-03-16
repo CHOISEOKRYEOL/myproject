@@ -10,6 +10,32 @@ public class Amount implements java.io.Serializable{
   public int midfielderprice;
   public int defenderprice;
 
+  @Override
+  public int hashCode() {
+    final int prime = 31;
+    int result = 1;
+    result = prime * result + defenderprice;
+    result = prime * result + fowardprice;
+    result = prime * result + midfielderprice;
+    return result;
+  }
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj)
+      return true;
+    if (obj == null)
+      return false;
+    if (getClass() != obj.getClass())
+      return false;
+    Amount other = (Amount) obj;
+    if (defenderprice != other.defenderprice)
+      return false;
+    if (fowardprice != other.fowardprice)
+      return false;
+    if (midfielderprice != other.midfielderprice)
+      return false;
+    return true;
+  }
   public int getFowardprice() {
     return fowardprice;
   }

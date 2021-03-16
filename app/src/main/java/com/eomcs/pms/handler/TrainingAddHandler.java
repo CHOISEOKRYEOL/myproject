@@ -20,7 +20,7 @@ public class TrainingAddHandler extends AbstractTrainingHandler {
     while (true) {
       String name = Prompt.inputString("이름 ");
       for (int i = 0; i < MemberList.size; i++) {
-        if (isMember(name)) {
+        if (name.equals()) {
           t.name = name;
           break;
         }
@@ -47,13 +47,5 @@ public class TrainingAddHandler extends AbstractTrainingHandler {
     TrainingList.add(t);
   }
 
-  static boolean isMember(String name) {
-    for (int i = 0; i < MemberList.size; i++) {
-      if (name.equals(MemberList.members[i].getName())) {
-        return true;
-      }
-    }
-    return false;
-  }
 
 }
