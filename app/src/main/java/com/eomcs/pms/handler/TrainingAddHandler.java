@@ -17,19 +17,7 @@ public class TrainingAddHandler extends AbstractTrainingHandler {
 
     System.out.println("[훈련 내용]");
 
-    while (true) {
-      String name = Prompt.inputString("이름 ");
-      for (int i = 0; i < MemberList.size; i++) {
-        if (name.equals()) {
-          t.name = name;
-          break;
-        }
-      }
-      if (t.name != null) {
-        break;
-      }
-      System.out.println("등록된 선수가 아닙니다.");
-    }
+    String name = Prompt.inputString("이름 ");
     t.title = Prompt.inputString("제목 ");
     t.content = Prompt.inputString("내용 ");
     t.startDate = Prompt.inputDate("시작일 ");
