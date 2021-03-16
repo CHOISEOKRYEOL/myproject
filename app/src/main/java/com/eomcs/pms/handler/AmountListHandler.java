@@ -25,7 +25,7 @@ public class AmountListHandler extends AbstractAmountHandler {
   @Override
   public void service() {
 
-    Object[] list =  amountList.toArray();
+    Object[] list = amountList.toArray();
 
     for(Object obj : list) {
       Amount a = (Amount) obj;
@@ -35,7 +35,7 @@ public class AmountListHandler extends AbstractAmountHandler {
           a.defenderprice);
     }
 
-    for(Amount a :amounts) {
+    for(Amount a :amountList) {
       fowardSum += a.fowardprice;
       midfielderSum += a.midfielderprice;
       defenderSum += a.defenderprice;
