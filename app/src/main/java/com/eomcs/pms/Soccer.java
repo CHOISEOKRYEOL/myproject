@@ -273,6 +273,7 @@ public class Soccer {
           f.setVitamin(Integer.parseInt(fields[5]));
 
           foodList.add(f);
+
         }catch (NoSuchElementException e) {
           break;
         }
@@ -282,18 +283,18 @@ public class Soccer {
       System.out.println("선수 식단 데이터 로딩 중 오류 발생!");
     }
   }
+
   void saveFoods() {
     try(FileWriter out = new FileWriter("foods.csv")) {
 
       for(Food f : foodList) {
-        out.write(String.format("%s,&d,%d,%d,%d,%d", 
+        out.write(String.format("%s,%d,%d,%d,%d,%d", 
             f.getName(),
             f.getCarbohydrate(),
             f.getProtein(),
             f.getCalcium(),
             f.getFat(),
             f.getVitamin()));
-
       }
       System.out.println("선수 식단 데이터 저장 완료!");
     }catch (Exception e) {
@@ -329,7 +330,7 @@ public class Soccer {
     try(FileWriter out = new FileWriter("amounts.csv")) {
 
       for(Amount a : amountList) {
-        out.write(String.format("%d,%d,%d,%d\n",
+        out.write(String.format("%d,%d,%d\n",
             a.getFowardprice(),
             a.getMidfielderprice(),
             a.getDefenderprice()));

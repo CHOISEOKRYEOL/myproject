@@ -1,10 +1,12 @@
 package com.eomcs.pms.handler;
 
 import java.util.List;
+import com.eomcs.pms.domain.Member;
 import com.eomcs.pms.domain.Training;
 import com.eomcs.util.Prompt;
 
 public class TrainingAddHandler extends AbstractTrainingHandler {
+
 
   public TrainingAddHandler(List<Training> trainingList) {
     super(trainingList);
@@ -13,6 +15,7 @@ public class TrainingAddHandler extends AbstractTrainingHandler {
   @Override
   public void service() {
 
+    Member m = new Member();
     Training t = new Training();
 
     System.out.println("[훈련 내용]");

@@ -5,10 +5,10 @@ import com.eomcs.pms.domain.Training;
 
 public class TrainingListHandler extends AbstractTrainingHandler {
 
+
   public TrainingListHandler(List<Training> trainingList) {
     super(trainingList);
   }
-
   @Override
   public void service() {
 
