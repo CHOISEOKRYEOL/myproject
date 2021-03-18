@@ -1,14 +1,40 @@
 package com.eomcs.pms.domain;
 
-import java.io.Serializable;
+import com.eomcs.util.CsvObject;
 
-public class Member implements Serializable{
+public class Member implements CsvObject {
 
   private static final long serialVersionUID = 1L;
   public int no;
   public String name;
   public String nationality;
   public String position;
+
+  public Member() {}
+
+  public Member(String csv) {
+    String[] fields = csv.split(",");
+    this.setNo(Integer.parseInt(fields[0]));
+    this.setName(fields[1]);
+    this.setNationality(fields[2]);
+    this.setPosition(fields[3]);
+
+  }
+
+  @Override
+  public String toString() {
+    return "Member [no=" + no + ", name=" + name + ", nationality=" + nationality + ", position="
+        + position + "]";
+  }
+
+  @Override
+  public String toCsvString() {
+    return String.format("%d,%s,%s,%s",
+        this.getNo(),
+        this.getName(),
+        this.getNationality(),
+        this.getPosition());
+  }
 
   @Override
   public int hashCode() {
@@ -72,4 +98,7 @@ public class Member implements Serializable{
   public void setPosition(String position) {
     this.position = position;
   }
+
+
+
 }

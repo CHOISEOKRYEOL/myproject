@@ -1,5 +1,6 @@
 package com.eomcs.pms;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.sql.Date;
@@ -44,6 +45,11 @@ public class Soccer {
   public static ArrayList<Training> trainingList = new ArrayList<>();
   public static ArrayList<Food>foodList = new ArrayList<>();
   public static ArrayList <Amount>amountList = new ArrayList<>();
+
+  static File boardFile = new File("boards.json");
+  static File memberFile = new File("members.json");
+  static File projectFile = new File("projects.json");
+  static File taskFile = new File("tasks.json");
 
   Stack<String> commandStack1  = new Stack<String>();
 
