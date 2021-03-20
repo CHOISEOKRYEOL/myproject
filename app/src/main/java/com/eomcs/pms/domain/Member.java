@@ -98,7 +98,4 @@ public class Member implements CsvObject {
   public void setPosition(String position) {
     this.position = position;
   }
-
-
-
 }
