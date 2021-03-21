@@ -24,6 +24,8 @@ import com.eomcs.pms.handler.AmountListHandler;
 import com.eomcs.pms.handler.Command;
 import com.eomcs.pms.handler.FoodAddHandler;
 import com.eomcs.pms.handler.FoodListHandler;
+import com.eomcs.pms.handler.GoodbyeHandler;
+import com.eomcs.pms.handler.HelloHandler;
 import com.eomcs.pms.handler.MemberAddHandler;
 import com.eomcs.pms.handler.MemberDeleteHandler;
 import com.eomcs.pms.handler.MemberDetailHandler;
@@ -102,6 +104,9 @@ public class Soccer {
 
     commandMap.put("/amount/add", new AmountAddHandler(amountList));
     commandMap.put("/amount/list", new AmountListHandler(amountList));
+
+    commandMap.put("/hello", new HelloHandler());
+    commandMap.put("/bye", new GoodbyeHandler());
 
     while(true) {
       System.out.println("아이디와 비밀번호를 입력하세요");
