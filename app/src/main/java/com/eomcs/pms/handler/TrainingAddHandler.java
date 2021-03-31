@@ -29,9 +29,11 @@ public class TrainingAddHandler extends AbstractTrainingHandler {
     String stateLabel = null;
     switch(t.status) {
       case 1:
+        t.stateLabel = "대기중";
+      case 2:
         t.stateLabel = "진행중";
         break;
-      case 2:
+      case 3:
         t.stateLabel = "완료";
         break;
     }
