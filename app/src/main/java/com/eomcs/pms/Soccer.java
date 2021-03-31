@@ -43,6 +43,9 @@ public class Soccer {
   static ArrayDeque<String> commandStack = new ArrayDeque<>();
   static LinkedList<String> commandQueue = new LinkedList<>();
 
+  String serverAddress;
+  int port;
+
   public static LinkedList<Member> memberList = new LinkedList<>();
   public static ArrayList<Training> trainingList = new ArrayList<>();
   public static ArrayList<Food>foodList = new ArrayList<>();
@@ -90,7 +93,7 @@ public class Soccer {
 
     HashMap<String,Command> commandMap = new HashMap<>();
 
-    commandMap.put("/member/add", new MemberAddHandler(memberList));
+    commandMap.put("/member/add", new MemberAddHandler());
     commandMap.put("/member/list", new MemberListHandler(memberList));
     commandMap.put("/member/detail", new MemberDetailHandler(memberList));
     commandMap.put("/member/update", new MemberUpdateHandler(memberList));
