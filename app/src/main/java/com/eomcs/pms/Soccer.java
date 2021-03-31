@@ -26,12 +26,7 @@ import com.eomcs.pms.handler.FoodListHandler;
 import com.eomcs.pms.handler.GoodbyeHandler;
 import com.eomcs.pms.handler.HelloHandler;
 import com.eomcs.pms.handler.MemberAddHandler;
-import com.eomcs.pms.handler.MemberDeleteHandler;
-import com.eomcs.pms.handler.MemberDetailHandler;
-import com.eomcs.pms.handler.MemberListHandler;
-import com.eomcs.pms.handler.MemberUpdateHandler;
 import com.eomcs.pms.handler.TrainingAddHandler;
-import com.eomcs.pms.handler.TrainingListHandler;
 import com.eomcs.pms.listener.AppListener;
 import com.eomcs.util.Prompt;
 
@@ -94,18 +89,18 @@ public class Soccer {
     HashMap<String,Command> commandMap = new HashMap<>();
 
     commandMap.put("/member/add", new MemberAddHandler());
-    commandMap.put("/member/list", new MemberListHandler(memberList));
+    /* commandMap.put("/member/list", new MemberListHandler(memberList));
     commandMap.put("/member/detail", new MemberDetailHandler(memberList));
     commandMap.put("/member/update", new MemberUpdateHandler(memberList));
     commandMap.put("/member/delete", new MemberDeleteHandler(memberList));
-
+     */
     commandMap.put("/training/add", new TrainingAddHandler());
-    commandMap.put("/training/list", new TrainingListHandler(trainingList));
+    //commandMap.put("/training/list", new TrainingListHandler(trainingList));
 
     commandMap.put("/food/add", new FoodAddHandler());
     commandMap.put("/food/list", new FoodListHandler(foodList));
 
-    commandMap.put("/amount/add", new AmountAddHandler(amountList));
+    commandMap.put("/amount/add", new AmountAddHandler());
     commandMap.put("/amount/list", new AmountListHandler(amountList));
 
     commandMap.put("/hello", new HelloHandler());
@@ -192,7 +187,7 @@ public class Soccer {
     }
   }
 
-  void loadMembers() {
+  /* void loadMembers() {
     try (Scanner in = new Scanner(new FileReader("members.csv"))) {
 
       while(true) {
@@ -216,6 +211,7 @@ public class Soccer {
       System.out.println("선수 데이터 로딩 중 오류 발생!");
     }
   }
+
   void saveMembers() {
     try(FileWriter out = new FileWriter("members.csv")) {
       for(Member member : memberList) {
@@ -230,6 +226,7 @@ public class Soccer {
       System.out.println(" 선수 데이터를 파일로 저장하는 중에 오류 발생!");
     }
   }
+   */
   /* void loadTrainings() {
     try (Scanner in = new Scanner(
         new FileReader("trainings.csv"))) {

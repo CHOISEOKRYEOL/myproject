@@ -1,30 +1,38 @@
 package com.eomcs.pms.handler;
 
-import java.util.List;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import com.eomcs.pms.domain.Amount;
 import com.eomcs.util.Prompt;
 
-public class AmountAddHandler extends AbstractAmountHandler {
-
-  public AmountAddHandler(List<Amount> amountList) {
-    super(amountList);
-  }
+public class AmountAddHandler implements Command {
 
   @Override
-  public void service() {
+  public void service() throws Exception{
+    System.out.println("[이적료]");
 
     Amount a = new Amount();
 
-    System.out.println("[포지션 별 영입 가격]");
-    System.out.println();
-    a.fowardprice = Prompt.inputInt("공격수 영입금액 ");
-    a.midfielderprice = Prompt.inputInt("미드필더 영입금액 ");
-    a.defenderprice = Prompt.inputInt("수비수 영입금액 ");
+    a.name = Prompt.inputString("이름 ");
+    a.fowardprice = Prompt.inputInt("공격수 가격: ");
+    a.midfielderprice = Prompt.inputInt("미드필더 가격: ");
+    a.defenderprice = Prompt.inputInt("수비수 가격: ");
 
-    amountList.add(a);
+    try(Connection con = DriverManager.getConnection(
+        "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
+        PreparedStatement stmt = con.prepareStatement(
+            "insert into soccer_amount(name,fowardprice,midfielderprice,defenderprice) values(?,?,?,?)");) {
+
+      stmt.setString(1, a.getName());
+      stmt.setInt(2, a.getFowardprice());
+      stmt.setInt(3, a.getMidfielderprice());
+      stmt.setInt(4, a.getDefenderprice());
+      stmt.executeUpdate();
+
+      System.out.println("이적료 관리 완료!");
+
+    }
 
   }
-
-
-
 }

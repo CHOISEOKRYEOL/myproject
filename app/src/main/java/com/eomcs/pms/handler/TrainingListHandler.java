@@ -1,5 +1,5 @@
 package com.eomcs.pms.handler;
-
+/*
 import java.util.List;
 import com.eomcs.pms.domain.Training;
 
@@ -21,3 +21,4 @@ public class TrainingListHandler extends AbstractTrainingHandler {
     }
   }
 }
+ */

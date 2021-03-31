@@ -1,5 +1,5 @@
 package com.eomcs.pms.handler;
-
+/*
 import java.util.List;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.util.Prompt;
@@ -41,3 +41,4 @@ public class MemberUpdateHandler extends AbstractMemberHandler {
 
   }
 }
+ */

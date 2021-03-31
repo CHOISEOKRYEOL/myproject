@@ -1,5 +1,5 @@
 package com.eomcs.pms.handler;
-
+/*
 import java.util.List;
 import com.eomcs.pms.domain.Member;
 
@@ -20,3 +20,4 @@ public class MemberListHandler extends AbstractMemberHandler {
   }
 
 }
+ */

@@ -14,7 +14,6 @@ public class MemberAddHandler implements Command {
 
     Member m = new Member();
 
-    m.no = Prompt.inputInt("번호 ");
     m.name = Prompt.inputString("이름 ");
     m.nationality = Prompt.inputString("국적 ");
     m.position = Prompt.inputString("포지션 ");
@@ -22,12 +21,11 @@ public class MemberAddHandler implements Command {
     try(Connection con = DriverManager.getConnection(
         "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
         PreparedStatement stmt = con.prepareStatement(
-            "insert into soccer_member(no,name,nationality,position) values(?,?,?,?)");) {
+            "insert into soccer_member(name,nationality,position) values(?,?,?)");) {
 
-      stmt.setInt(1, m.getNo());
-      stmt.setString(2, m.getName());
-      stmt.setString(3, m.getNationality());
-      stmt.setString(4, m.getPosition());
+      stmt.setString(1, m.getName());
+      stmt.setString(2, m.getNationality());
+      stmt.setString(3, m.getPosition());
       stmt.executeUpdate();
 
       System.out.println("선수 등록 완료!");

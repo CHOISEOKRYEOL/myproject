@@ -1,5 +1,5 @@
 package com.eomcs.pms.handler;
-
+/*
 import com.eomcs.pms.domain.Member;
 
 public class MemberList {
@@ -58,3 +58,4 @@ public class MemberList {
   }
 
 }
+ */
