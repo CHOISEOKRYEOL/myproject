@@ -30,7 +30,7 @@ public class MemberAddHandler implements Command {
       stmt.setString(4, m.getPosition());
       stmt.executeUpdate();
 
-      System.out.println("선수 등록이 되었습니다.");
+      System.out.println("선수 등록 완료!");
 
     }
 

@@ -3,7 +3,6 @@ package com.eomcs.pms;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.sql.Date;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -86,11 +85,12 @@ public class Soccer {
     Map<String, String> map = new Hashtable<String,String>();
     map.put("soccer", "1111");
 
+    /*
     loadMembers();
     loadTrainings();
     loadFoods();
     loadAmounts();
-
+     */
     HashMap<String,Command> commandMap = new HashMap<>();
 
     commandMap.put("/member/add", new MemberAddHandler());
@@ -99,10 +99,10 @@ public class Soccer {
     commandMap.put("/member/update", new MemberUpdateHandler(memberList));
     commandMap.put("/member/delete", new MemberDeleteHandler(memberList));
 
-    commandMap.put("/training/add", new TrainingAddHandler(trainingList));
+    commandMap.put("/training/add", new TrainingAddHandler());
     commandMap.put("/training/list", new TrainingListHandler(trainingList));
 
-    commandMap.put("/food/add", new FoodAddHandler(foodList));
+    commandMap.put("/food/add", new FoodAddHandler());
     commandMap.put("/food/list", new FoodListHandler(foodList));
 
     commandMap.put("/amount/add", new AmountAddHandler(amountList));
@@ -164,10 +164,12 @@ public class Soccer {
           System.out.println(); 
         }
       }
+    /*
     saveMembers();
     saveTrainings();
     saveFoods();
     saveAmounts();
+     */
 
     notifyOnServiceStopped();
 
@@ -228,7 +230,7 @@ public class Soccer {
       System.out.println(" 선수 데이터를 파일로 저장하는 중에 오류 발생!");
     }
   }
-  void loadTrainings() {
+  /* void loadTrainings() {
     try (Scanner in = new Scanner(
         new FileReader("trainings.csv"))) {
 
@@ -254,8 +256,8 @@ public class Soccer {
       System.out.println("선수 데이터 로딩 중 오류 발생!");
     }
   }
-
-  void saveTrainings() {
+   */
+  /* void saveTrainings() {
     try(FileWriter out = new FileWriter("trainings.csv")) {
 
       for(Training t : trainingList) {
@@ -271,6 +273,7 @@ public class Soccer {
       System.out.println("선수 훈련 데이터를 파일로 저장하는 중에 오류 발생!");
     }
   }
+   */
   void loadFoods() {
     try (Scanner in = new Scanner(new FileReader("foods.csv"))) {
 

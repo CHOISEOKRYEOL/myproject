@@ -9,19 +9,60 @@ public class Training implements Serializable{
   public String name;
   public String title;
   public String content;
-  public Date startDate;
-  public Date endDate;
+  public Date sdt;
+  public Date edt;
   public int status;
   public String stateLabel;
-
+  public String getName() {
+    return name;
+  }
+  public void setName(String name) {
+    this.name = name;
+  }
+  public String getTitle() {
+    return title;
+  }
+  public void setTitle(String title) {
+    this.title = title;
+  }
+  public String getContent() {
+    return content;
+  }
+  public void setContent(String content) {
+    this.content = content;
+  }
+  public Date getSdt() {
+    return sdt;
+  }
+  public void setSdt(Date sdt) {
+    this.sdt = sdt;
+  }
+  public Date getEdt() {
+    return edt;
+  }
+  public void setEdt(Date edt) {
+    this.edt = edt;
+  }
+  public int getStatus() {
+    return status;
+  }
+  public void setStatus(int status) {
+    this.status = status;
+  }
+  public String getStateLabel() {
+    return stateLabel;
+  }
+  public void setStateLabel(String stateLabel) {
+    this.stateLabel = stateLabel;
+  }
   @Override
   public int hashCode() {
     final int prime = 31;
     int result = 1;
     result = prime * result + ((content == null) ? 0 : content.hashCode());
-    result = prime * result + ((endDate == null) ? 0 : endDate.hashCode());
+    result = prime * result + ((edt == null) ? 0 : edt.hashCode());
     result = prime * result + ((name == null) ? 0 : name.hashCode());
-    result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
+    result = prime * result + ((sdt == null) ? 0 : sdt.hashCode());
     result = prime * result + ((stateLabel == null) ? 0 : stateLabel.hashCode());
     result = prime * result + status;
     result = prime * result + ((title == null) ? 0 : title.hashCode());
@@ -41,20 +82,20 @@ public class Training implements Serializable{
         return false;
     } else if (!content.equals(other.content))
       return false;
-    if (endDate == null) {
-      if (other.endDate != null)
+    if (edt == null) {
+      if (other.edt != null)
         return false;
-    } else if (!endDate.equals(other.endDate))
+    } else if (!edt.equals(other.edt))
       return false;
     if (name == null) {
       if (other.name != null)
         return false;
     } else if (!name.equals(other.name))
       return false;
-    if (startDate == null) {
-      if (other.startDate != null)
+    if (sdt == null) {
+      if (other.sdt != null)
         return false;
-    } else if (!startDate.equals(other.startDate))
+    } else if (!sdt.equals(other.sdt))
       return false;
     if (stateLabel == null) {
       if (other.stateLabel != null)
@@ -70,47 +111,10 @@ public class Training implements Serializable{
       return false;
     return true;
   }
+  @Override
+  public String toString() {
+    return "Training [name=" + name + ", title=" + title + ", content=" + content + ", sdt=" + sdt
+        + ", edt=" + edt + ", status=" + status + ", stateLabel=" + stateLabel + "]";
+  }
 
-  public String getName() {
-    return name;
-  }
-  public void setName(String name) {
-    this.name = name;
-  }
-  public String getTitle() {
-    return title;
-  }
-  public void setTitle(String title) {
-    this.title = title;
-  }
-  public String getContent() {
-    return content;
-  }
-  public void setContent(String content) {
-    this.content = content;
-  }
-  public Date getStartDate() {
-    return startDate;
-  }
-  public void setStartDate(Date startDate) {
-    this.startDate = startDate;
-  }
-  public Object getEndDate() {
-    return endDate;
-  }
-  public void setEndDate(Date endDate) {
-    this.endDate = endDate;
-  }
-  public int getStatus() {
-    return status;
-  }
-  public void setStatus(int status) {
-    this.status = status;
-  }
-  public String getStateLabel() {
-    return stateLabel;
-  }
-  public void setStateLabel(String stateLabel) {
-    this.stateLabel = stateLabel;
-  }
 }
