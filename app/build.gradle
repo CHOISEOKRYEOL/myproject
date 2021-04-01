@@ -36,6 +36,8 @@ tasks.withType(JavaCompile) {
 
 dependencies {
 
+    implementation 'org.mybatis:mybatis:3.5.6'
+
     implementation 'org.mariadb.jdbc:mariadb-java-client:2.7.2'
     
     // Use JUnit test framework.
