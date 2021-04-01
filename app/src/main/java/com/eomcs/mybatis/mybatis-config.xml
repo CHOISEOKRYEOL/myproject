@@ -18,10 +18,10 @@
       
       <!-- DB 커넥션 풀에 관련된 정보와 DB 연결 정보를 설정한다.-->
       <dataSource type="POOLED">
-        <property name="driver" value="org.mariadb.jdbc.Driver"/>
-        <property name="url" value="jdbc:mariadb://localhost:3306/studydb"/>
-        <property name="username" value="study"/>
-        <property name="password" value="1111"/>
+        <property name="driver" value="${driver}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="$password}"/>
       </dataSource>
     </environment>
     
