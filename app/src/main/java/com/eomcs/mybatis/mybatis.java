@@ -1,5 +1,6 @@
 package com.eomcs.mybatis;
 
+import java.util.List;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -11,12 +12,12 @@ public class mybatis {
     SqlSession sqlSession = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream(
         "com/eomcs/mybatis/mybatis-config.xml")).openSession();
 
-    System.out.println("mybatis 사용 준비 완료!");
+    List<Member> members = sqlSession.selectList("MemberMapper.selectMember");
+
+    System.out.println(members.size());
 
     sqlSession.close();
 
-
   }
-
 
 }
