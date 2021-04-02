@@ -12,12 +12,15 @@ public class mybatis {
     SqlSession sqlSession = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream(
         "com/eomcs/mybatis/mybatis-config.xml")).openSession();
 
-    List<Member> members = sqlSession.selectList("MemberMapper.selectMember");
+    //    List<Member> members = sqlSession.selectList("MemberMapper.selectMember");
+    List<Board> boards = sqlSession.selectList("BoardMapper.selectBoard");
 
-    System.out.println(members.size());
+
+    //System.out.println(members.size());
 
     sqlSession.close();
 
+    System.out.println("실행 완료!");
   }
 
 }
