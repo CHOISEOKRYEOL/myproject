@@ -20,6 +20,11 @@ public class mybatis {
 
     List<Amount> amounts = sqlSession.selectList("AmountMapper.selectAmount");
 
+    System.out.println(members.size());
+    System.out.println(trainings.size());
+    System.out.println(foods.size());
+    System.out.println(amounts.size());
+
     sqlSession.close();
 
     System.out.println("실행 완료!");

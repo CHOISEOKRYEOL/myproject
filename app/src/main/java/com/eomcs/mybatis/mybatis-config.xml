@@ -23,7 +23,12 @@
   </environments>
   
   <mappers>
-   <mapper resource="com/eomcs/mybatis/MemberMapper.xml"/>
+    <mapper resource="com/eomcs/mybatis/MemberMapper.xml"/>
+    <mapper resource="com/eomcs/mybatis/TrainingMapper.xml"/>
+    <mapper resource="com/eomcs/mybatis/FoodMapper.xml"/>
+    <mapper resource="com/eomcs/mybatis/AmountMapper.xml"/>
   </mappers>
  
+
+
 </configuration>

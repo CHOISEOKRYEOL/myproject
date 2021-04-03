@@ -10,7 +10,7 @@
      name,
      fowardprice,
      midfielderprice,
-     defenderprice,
+     defenderprice
     from soccer_amount
   </select>
 </mapper>
