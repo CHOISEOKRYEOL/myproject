@@ -1,4 +1,4 @@
-package com.eomcs.mybatis;
+package com.eomcs.mybatis.vo;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -6,6 +6,7 @@ import java.sql.Date;
 public class Training implements Serializable{
 
   private static final long serialVersionUID = 1L;
+  public int no;
   public String name;
   public String title;
   public String content;
@@ -14,6 +15,12 @@ public class Training implements Serializable{
   public int status;
   public String stateLabel;
 
+  public int getNo() {
+    return no;
+  }
+  public void setNo(int no) {
+    this.no = no;
+  }
   public String getName() {
     return name;
   }
@@ -56,6 +63,14 @@ public class Training implements Serializable{
   public void setStateLabel(String stateLabel) {
     this.stateLabel = stateLabel;
   }
+
+  @Override
+  public String toString() {
+    return "Training [no=" + no + ", name=" + name + ", title=" + title + ", content=" + content
+        + ", sdt=" + sdt + ", edt=" + edt + ", status=" + status + ", stateLabel=" + stateLabel
+        + "]";
+  }
+
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -63,12 +78,14 @@ public class Training implements Serializable{
     result = prime * result + ((content == null) ? 0 : content.hashCode());
     result = prime * result + ((edt == null) ? 0 : edt.hashCode());
     result = prime * result + ((name == null) ? 0 : name.hashCode());
+    result = prime * result + no;
     result = prime * result + ((sdt == null) ? 0 : sdt.hashCode());
     result = prime * result + ((stateLabel == null) ? 0 : stateLabel.hashCode());
     result = prime * result + status;
     result = prime * result + ((title == null) ? 0 : title.hashCode());
     return result;
   }
+
   @Override
   public boolean equals(Object obj) {
     if (this == obj)
@@ -93,6 +110,8 @@ public class Training implements Serializable{
         return false;
     } else if (!name.equals(other.name))
       return false;
+    if (no != other.no)
+      return false;
     if (sdt == null) {
       if (other.sdt != null)
         return false;
@@ -112,10 +131,7 @@ public class Training implements Serializable{
       return false;
     return true;
   }
-  @Override
-  public String toString() {
-    return "Training [name=" + name + ", title=" + title + ", content=" + content + ", sdt=" + sdt
-        + ", edt=" + edt + ", status=" + status + ", stateLabel=" + stateLabel + "]";
-  }
+
+
 
 }

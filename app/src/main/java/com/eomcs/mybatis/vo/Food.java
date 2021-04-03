@@ -1,4 +1,4 @@
-package com.eomcs.mybatis;
+package com.eomcs.mybatis.vo;
 
 import java.io.Serializable;
 

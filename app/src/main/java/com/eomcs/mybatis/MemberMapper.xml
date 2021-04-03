@@ -7,9 +7,11 @@
    
   <select id="selectMember" resultType="member">
     select 
+      no
       name,
       nationality,
-      position
+      position,
+      cdt
     from soccer_member
   </select>
 </mapper>

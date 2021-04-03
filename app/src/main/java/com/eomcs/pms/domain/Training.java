@@ -13,6 +13,7 @@ public class Training implements Serializable{
   public Date edt;
   public int status;
   public String stateLabel;
+
   public String getName() {
     return name;
   }

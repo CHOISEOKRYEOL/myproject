@@ -7,7 +7,8 @@
    
   <select id="selectAmount" resultType="amount">
     select 
-     name,
+     scout_member as scoutname,
+     member_name as name,
      fowardprice,
      midfielderprice,
      defenderprice

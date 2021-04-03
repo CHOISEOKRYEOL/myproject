@@ -7,7 +7,7 @@
    
   <select id="selectFood" resultType="food">
     select 
-     name,
+     member_name as name,
      carbohydrate,
      protein,
      calcium,
