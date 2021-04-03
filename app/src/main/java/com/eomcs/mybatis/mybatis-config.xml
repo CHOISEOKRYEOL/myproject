@@ -22,10 +22,8 @@
     </environment>
   </environments>
   
-
-  
   <mappers>
-   <mapper resource="com/eomcs/mybatis/BoardMapper.xml"/>
+   <mapper resource="com/eomcs/mybatis/MemberMapper.xml"/>
   </mappers>
  
 </configuration>
