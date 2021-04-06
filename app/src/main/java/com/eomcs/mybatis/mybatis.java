@@ -24,11 +24,11 @@ public class mybatis {
           m.getName(),
           m.getNationality(),
           m.getPosition());
-    }
+    } 
 
     List<Training> trainings = sqlSession.selectList("TrainingMapper.selectTraining");
 
-    for(Training t : trainings) {
+    for(Training t : trainings) { 
       System.out.printf("%d,%s,%s,%s,%s,%s,%d",
           t.getNo(),
           t.getName(),
