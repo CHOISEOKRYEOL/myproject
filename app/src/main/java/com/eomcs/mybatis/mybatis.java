@@ -18,7 +18,7 @@ public class mybatis {
 
     List<Member> members = sqlSession.selectList("MemberMapper.selectMember");
 
-    for(Member m : members) {  
+    for(Member m : members) {   
       System.out.printf("%d,%s,%s,%s", 
           m.getNo(),
           m.getName(),
