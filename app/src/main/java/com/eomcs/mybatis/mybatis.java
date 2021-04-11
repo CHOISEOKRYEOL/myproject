@@ -4,10 +4,10 @@ import java.util.List;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import com.eomcs.mybatis.vo.Amount;
-import com.eomcs.mybatis.vo.Food;
-import com.eomcs.mybatis.vo.Member;
-import com.eomcs.mybatis.vo.Training;
+import com.eomcs.mybatis.vo.Catalog;
+import com.eomcs.mybatis.vo.Delivery;
+import com.eomcs.mybatis.vo.Payment;
+import com.eomcs.mybatis.vo.User;
 
 public class mybatis {
 
@@ -16,59 +16,61 @@ public class mybatis {
     SqlSession sqlSession = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream(
         "com/eomcs/mybatis/mybatis-config.xml")).openSession();
 
-    List<Member> members = sqlSession.selectList("MemberMapper.selectMember");
+    List<User> users = sqlSession.selectList("UserMapper.selectUser");
 
-    for(Member m : members) {   
-      System.out.printf("%d,%s,%s,%s", 
-          m.getNo(),
-          m.getName(),
-          m.getNationality(),
-          m.getPosition());
+    for(User u : users) {   
+      System.out.printf("%d,%s,%s,%s,%s,%s,%s,%s", 
+          u.getNo(),
+          u.getName(),
+          u.getAddress(),
+          u.getGender(),
+          u.getTel(),
+          u.getId(),
+          u.getPassword(),
+          u.getCdt());
     } 
 
-    List<Training> trainings = sqlSession.selectList("TrainingMapper.selectTraining");
+    List<Payment> payments = sqlSession.selectList("PaymentMapper.selectPayment");
 
-    for(Training t : trainings) { 
-      System.out.printf("%d,%s,%s,%s,%s,%s,%d",
-          t.getNo(),
-          t.getName(),
-          t.getTitle(),
-          t.getContent(),
-          t.getSdt(),
-          t.getEdt(),
-          t.getStatus());
+    for(Payment p : payments) { 
+      System.out.printf("%d,%s,%s,%s,%s,%s,%s,%d",
+          p.getNo(),
+          p.getName(),
+          p.getTitle(),
+          p.getPrice(),
+          p.getCardnumber(),
+          p.getTel(),
+          p.getId(),
+          p.getStatus());
     }
 
-    List<Food> foods = sqlSession.selectList("FoodMapper.selectFood");
+    List<Catalog> catalogs = sqlSession.selectList("CatalogMapper.selectCatalog");
 
-    for(Food f : foods) {
-      System.out.printf("%s,%d,%d,%d,%d,%d",
-          f.getName(),
-          f.getCarbohydrate(),
-          f.getProtein(),
-          f.getCalcium(),
-          f.getFat(),
-          f.getVitamin());
+    for(Catalog c : catalogs) {
+      System.out.printf("%d,%s,%s,%s",
+          c.getNo(),
+          c.getTitle(),
+          c.getWriter(),
+          c.getPrice());
     }
 
 
-    List<Amount> amounts = sqlSession.selectList("AmountMapper.selectAmount");
+    List<Delivery> deliveries = sqlSession.selectList("DeliveryMapper.selectDelivery");
 
-    for(Amount a : amounts) {
+    for(Delivery d : deliveries) {
       System.out.printf("%s,%s,%d,%d,%d",
-          a.getName(),
-          a.getScoutname(),
-          a.getFowardprice(),
-          a.getMidfielderprice(),
-          a.getDefenderprice()
+          d.getName(),
+          d.getDeliveryNo(),
+          d.getSender(),
+          d.getDestinataire()
           );
     }
 
 
-    System.out.println(members.size());
-    System.out.println(trainings.size());
-    System.out.println(foods.size());
-    System.out.println(amounts.size());
+    System.out.println(users.size());
+    System.out.println(payments.size());
+    System.out.println(catalogs.size());
+    System.out.println(deliveries.size());
 
     sqlSession.close();
 

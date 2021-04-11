@@ -1,17 +1,17 @@
 package com.eomcs.mybatis.vo;
 
 import java.io.Serializable;
-import java.sql.Date;
 
-public class Training implements Serializable{
+public class Payment implements Serializable{
 
   private static final long serialVersionUID = 1L;
   public int no;
   public String name;
   public String title;
-  public String content;
-  public Date sdt;
-  public Date edt;
+  public String price;
+  public String cardNumber;
+  public String tel;
+  public String id;
   public int status;
   public String stateLabel;
 
@@ -33,23 +33,29 @@ public class Training implements Serializable{
   public void setTitle(String title) {
     this.title = title;
   }
-  public String getContent() {
-    return content;
+  public String getPrice() {
+    return price;
   }
-  public void setContent(String content) {
-    this.content = content;
+  public void setPrice(String price) {
+    this.price = price;
   }
-  public Date getSdt() {
-    return sdt;
+  public String getCardnumber() {
+    return cardNumber;
   }
-  public void setSdt(Date sdt) {
-    this.sdt = sdt;
+  public void setCardnumber(String cardNumber) {
+    this.cardNumber = cardNumber;
   }
-  public Date getEdt() {
-    return edt;
+  public String getTel() {
+    return tel;
   }
-  public void setEdt(Date edt) {
-    this.edt = edt;
+  public void setTel(String tel) {
+    this.tel = tel;
+  }
+  public String getId() {
+    return id;
+  }
+  public void setId(String id) {
+    this.id = id;
   }
   public int getStatus() {
     return status;
@@ -65,23 +71,17 @@ public class Training implements Serializable{
   }
 
   @Override
-  public String toString() {
-    return "Training [no=" + no + ", name=" + name + ", title=" + title + ", content=" + content
-        + ", sdt=" + sdt + ", edt=" + edt + ", status=" + status + ", stateLabel=" + stateLabel
-        + "]";
-  }
-
-  @Override
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + ((content == null) ? 0 : content.hashCode());
-    result = prime * result + ((edt == null) ? 0 : edt.hashCode());
+    result = prime * result + ((cardNumber == null) ? 0 : cardNumber.hashCode());
+    result = prime * result + ((id == null) ? 0 : id.hashCode());
     result = prime * result + ((name == null) ? 0 : name.hashCode());
     result = prime * result + no;
-    result = prime * result + ((sdt == null) ? 0 : sdt.hashCode());
+    result = prime * result + ((price == null) ? 0 : price.hashCode());
     result = prime * result + ((stateLabel == null) ? 0 : stateLabel.hashCode());
     result = prime * result + status;
+    result = prime * result + ((tel == null) ? 0 : tel.hashCode());
     result = prime * result + ((title == null) ? 0 : title.hashCode());
     return result;
   }
@@ -94,16 +94,16 @@ public class Training implements Serializable{
       return false;
     if (getClass() != obj.getClass())
       return false;
-    Training other = (Training) obj;
-    if (content == null) {
-      if (other.content != null)
+    Payment other = (Payment) obj;
+    if (cardNumber == null) {
+      if (other.cardNumber != null)
         return false;
-    } else if (!content.equals(other.content))
+    } else if (!cardNumber.equals(other.cardNumber))
       return false;
-    if (edt == null) {
-      if (other.edt != null)
+    if (id == null) {
+      if (other.id != null)
         return false;
-    } else if (!edt.equals(other.edt))
+    } else if (!id.equals(other.id))
       return false;
     if (name == null) {
       if (other.name != null)
@@ -112,10 +112,10 @@ public class Training implements Serializable{
       return false;
     if (no != other.no)
       return false;
-    if (sdt == null) {
-      if (other.sdt != null)
+    if (price == null) {
+      if (other.price != null)
         return false;
-    } else if (!sdt.equals(other.sdt))
+    } else if (!price.equals(other.price))
       return false;
     if (stateLabel == null) {
       if (other.stateLabel != null)
@@ -123,6 +123,11 @@ public class Training implements Serializable{
     } else if (!stateLabel.equals(other.stateLabel))
       return false;
     if (status != other.status)
+      return false;
+    if (tel == null) {
+      if (other.tel != null)
+        return false;
+    } else if (!tel.equals(other.tel))
       return false;
     if (title == null) {
       if (other.title != null)
@@ -132,6 +137,11 @@ public class Training implements Serializable{
     return true;
   }
 
-
+  @Override
+  public String toString() {
+    return "PayMent [no=" + no + ", name=" + name + ", title=" + title + ", price=" + price
+        + ", cardNumber=" + cardNumber + ", tel=" + tel + ", id=" + id + ", status=" + status
+        + ", stateLabel=" + stateLabel + "]";
+  }
 
 }

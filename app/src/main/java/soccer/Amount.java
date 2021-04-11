@@ -1,4 +1,4 @@
-package com.eomcs.mybatis.vo;
+package soccer;
 
 public class Amount implements java.io.Serializable{
 

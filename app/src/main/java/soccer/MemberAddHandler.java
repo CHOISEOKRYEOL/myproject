@@ -1,4 +1,4 @@
-package com.eomcs.pms.handler;
+package soccer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -4,14 +4,14 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
-  <properties resource="com/eomcs/test/jdbc.properties"></properties>
+  <properties resource="com/eomcs/mybatis/jdbc.properties"></properties>
 
   <typeAliases>
-    <package name="com.eomcs.test"/>
+    <package name="com.eomcs.mybatis"/>
   </typeAliases>
 
-  <environments default="development">
-    <environment id="development">
+  <environments default="test">
+    <environment id="test">
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
         <property name="driver" value="${driver}"/>
@@ -23,14 +23,12 @@
   </environments>
   
   <mappers>
-    <mapper resource="com/eomcs/test/BoardMapper.xml"/>
+    <mapper resource="com/eomcs/mybatis/UserMapper.xml"/>
+    <mapper resource="com/eomcs/mybatis/PaymentMapper.xml"/>
+    <mapper resource="com/eomcs/mybatis/CatalogMapper.xml"/>
+    <mapper resource="com/eomcs/mybatis/DeliveryMapper.xml"/>
   </mappers>
+ 
+
+
 </configuration>
-
-
-
-
-
-
-
-

@@ -3,7 +3,7 @@ package com.eomcs.pms.handler;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import com.eomcs.pms.domain.Training;
+import com.eomcs.mybatis.vo.Payment;
 import com.eomcs.util.Prompt;
 
 public class TrainingAddHandler implements Command {
@@ -11,33 +11,36 @@ public class TrainingAddHandler implements Command {
   @Override
   public void service() throws Exception {
 
-    System.out.println("[훈련 관리]");
+    System.out.println("[결제 관리]");
 
-    Training t = new Training();
+    Payment p = new Payment();
 
-    t.name = Prompt.inputString("이름: ");
-    t.title = Prompt.inputString("제목: ");
-    t.content = Prompt.inputString("내용: ");
-    t.sdt = Prompt.inputDate("시작일: ");
-    t.edt= Prompt.inputDate("종료일: ");
-    t.status = Prompt.inputInt(" 대기중: 1\n 진행중: 2\n 완료: 3\n");
+    p.name = Prompt.inputString("이름: ");
+    p.title = Prompt.inputString("제목: ");
+    p.price = Prompt.inputString("가격: ");
+    p.cardNumber = Prompt.inputString("카드번호: ");
+    p.tel= Prompt.inputString("전화번호: ");
+    p.id = Prompt.inputString("아이디: ");
+    p.status = Prompt.inputInt(" 결제중: 1\n 완료: 2\n");
 
 
     try(Connection con = DriverManager.getConnection(
         "jdbc:mysql://localhost:3306/studydb?user=study&password=1111");
         PreparedStatement stmt = con.prepareStatement(
-            "insert into soccer_training(name,title,content,sdt,edt,status) values(?,?,?,?,?,?)");) {
+            "insert into soccer_training(no,name,title,price,cardNumber,tel,id,status) values(?,?,?,?,?,?,?,?)");) {
 
+      stmt.setInt(1, p.getNo());
+      stmt.setString(1, p.getName());
+      stmt.setString(2, p.getTitle());
+      stmt.setString(3, p.getPrice());
+      stmt.setString(4, p.getCardnumber());
+      stmt.setString(5, p.getTel());
+      stmt.setString(6, p.getId());
+      stmt.setInt(1, p.getStatus());
 
-      stmt.setString(1, t.getName());
-      stmt.setString(2, t.getTitle());
-      stmt.setString(3, t.getContent());
-      stmt.setDate(4, t.getSdt());
-      stmt.setObject(5, t.getEdt());
-      stmt.setInt(6, t.getStatus());
       stmt.executeUpdate();
 
-      System.out.println("훈련 관리 등록 완료!");
+      System.out.println("결제 관리 등록 완료!");
 
       /*
        String stateLabel = null;

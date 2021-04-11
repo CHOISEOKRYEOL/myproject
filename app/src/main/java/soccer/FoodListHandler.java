@@ -1,4 +1,4 @@
-package com.eomcs.pms.handler;
+package soccer;
 
 import java.util.List;
 import com.eomcs.pms.domain.Food;

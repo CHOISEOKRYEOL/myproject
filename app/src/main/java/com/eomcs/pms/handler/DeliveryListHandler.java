@@ -4,8 +4,8 @@ import java.util.List;
 import com.eomcs.pms.domain.Amount;
 import com.eomcs.util.Prompt;
 
-public class AmountListHandler extends AbstractAmountHandler {
-  public AmountListHandler(List<Amount> amountList) {
+public class DeliveryListHandler extends AbstractAmountHandler {
+  public DeliveryListHandler(List<Amount> amountList) {
     super(amountList);
   }
 

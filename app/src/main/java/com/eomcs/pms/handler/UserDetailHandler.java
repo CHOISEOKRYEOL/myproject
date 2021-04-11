@@ -4,9 +4,9 @@ import java.util.List;
 import com.eomcs.pms.domain.Member;
 import com.eomcs.util.Prompt;
 
-public class MemberDetailHandler extends AbstractMemberHandler {
+public class UserDetailHandler extends AbstractMemberHandler {
 
-  public MemberDetailHandler(List<Member> memberList) {
+  public UserDetailHandler(List<Member> memberList) {
     super(memberList);
   }
 

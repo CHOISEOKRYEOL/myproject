@@ -1,4 +1,4 @@
-package com.eomcs.mybatis.vo;
+package soccer;
 
 import java.io.Serializable;
 
