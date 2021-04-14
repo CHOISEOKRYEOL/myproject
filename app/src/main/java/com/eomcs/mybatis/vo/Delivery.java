@@ -9,7 +9,7 @@ public class Delivery implements java.io.Serializable{
   public String name;
   public String deliveryNo;
   public String sender;
-  public String destinataire;
+  public String destinataire; 
 
   public String getName() {
     return name;
