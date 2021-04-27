@@ -16,7 +16,7 @@ public class mybatis {
     SqlSession sqlSession = new SqlSessionFactoryBuilder().build(Resources.getResourceAsStream(
         "com/eomcs/mybatis/mybatis-config.xml")).openSession();
 
-    List<User> users = sqlSession.selectList("UserMapper.selectUser");
+    List<User> users = sqlSession.selectList("UserMapper.selectUser"); 
 
     for(User u : users) {   
       System.out.printf("%d,%s,%s,%s,%s,%s,%s,%s", 
