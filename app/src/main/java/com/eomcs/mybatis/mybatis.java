@@ -18,7 +18,7 @@ public class mybatis {
 
     List<User> users = sqlSession.selectList("UserMapper.selectUser"); 
 
-    for(User u : users) {   
+    for(User u : users) {    
       System.out.printf("%d,%s,%s,%s,%s,%s,%s,%s", 
           u.getNo(),
           u.getName(),
